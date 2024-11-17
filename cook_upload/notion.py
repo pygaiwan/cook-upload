@@ -19,7 +19,7 @@ class NotionActions:
 
     @validate_call
     def get_entry(self, title: str | None = None) -> NotionDBSearch:
-        data = {'filter': {'property': 'Name', 'title': {'equals': title}}}
+        data = {'filter': {'property': 'Name', 'title': {'equals': title or ''}}}
         response = requests.post(
             f'{NOTION_DB_API_URL.format(self.db_id)}/query',
             headers=self.headers | {'Content-Type': 'application/json'},
