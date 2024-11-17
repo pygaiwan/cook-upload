@@ -1,0 +1,78 @@
+interactions:
+- request:
+    body: '{"filter": {"property": "Name", "title": {"equals": "Baklava"}}}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - dummy
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '64'
+      Content-Type:
+      - application/json
+      Notion-Version:
+      - '2022-06-28'
+      User-Agent:
+      - python-requests/2.32.3
+    method: POST
+    uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131/query
+  response:
+    body:
+      string: '{"object":"list","results":[{"object":"page","id":"d4251acf-eb2d-4f65-9809-543ca7524094","created_time":"2021-06-16T20:26:00.000Z","last_edited_time":"2021-06-16T20:45:00.000Z","created_by":{"object":"user","id":"9823e3c7-7622-4acd-a752-78077928d05f"},"last_edited_by":{"object":"user","id":"9823e3c7-7622-4acd-a752-78077928d05f"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"bf2fffea-2abd-4f2c-9e1c-37bf23273378","name":"Sweet","color":"blue"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":{"id":"5dc9f5ce-3ef6-4819-a0af-209bb0e4d16f","name":"Lebanon","color":"brown"}},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"97704536-333a-44f2-8c9c-aabfc81c0912","name":"Medium","color":"orange"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"Lebanon
+        Cookbookp pg 413","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Lebanon
+        Cookbookp pg 413","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":null},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Baklava","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Baklava","href":null}]}},"url":"https://www.notion.so/Baklava-d4251acfeb2d4f659809543ca7524094","public_url":null}],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"c4c9f4bb-b2e9-4cb1-ba30-dcced41fb990"}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-Ray:
+      - 8e4063dcc94779b5-LHR
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 17 Nov 2024 14:25:26 GMT
+      ETag:
+      - W/"6ad-+FUZ8s7cexaLApuA2HXjsW+1jYc"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=y8P54nrYS25H0WLBPDgMADji4YvgoEcxcdFnh.MTkcQ-1731853526-1.0.1.1-mTvIOa9eD_9jYkJ.fzA5Gg0MRRSfiZY_lrAO6UzTTP.2V7IqtUGLO5d7IeAj7UUtoMjJ103VH_sJ1KibIe.R5w;
+        path=/; expires=Sun, 17-Nov-24 14:55:26 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=IOR7.FjoNRIHJd0wPPakQfo1vWV2yygtEq1nCAbPnFk-1731853526857-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - c4c9f4bb-b2e9-4cb1-ba30-dcced41fb990
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,0 +1,72 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - dummy
+      Connection:
+      - keep-alive
+      Notion-Version:
+      - '2022-06-28'
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131
+  response:
+    body:
+      string: "{\"object\":\"database\",\"id\":\"56dada1e-4604-428b-9e2d-7d1a8d2ad131\",\"cover\":null,\"icon\":{\"type\":\"emoji\",\"emoji\":\"\U0001F4D6\"},\"created_time\":\"2021-02-23T16:20:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"9823e3c7-7622-4acd-a752-78077928d05f\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"9823e3c7-7622-4acd-a752-78077928d05f\"},\"last_edited_time\":\"2024-11-17T11:41:00.000Z\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Recipes\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Recipes\",\"href\":null}],\"description\":[],\"is_inline\":true,\"properties\":{\"Type\":{\"id\":\"%3A%3CxB\",\"name\":\"Type\",\"type\":\"select\",\"select\":{\"options\":[{\"id\":\"76d61d55-cd7f-4155-b459-17f2b045a453\",\"name\":\"Base\",\"color\":\"pink\",\"description\":null},{\"id\":\"bf2fffea-2abd-4f2c-9e1c-37bf23273378\",\"name\":\"Sweet\",\"color\":\"blue\",\"description\":null},{\"id\":\"9a5788ed-5896-492e-9d88-0f70d4156cd1\",\"name\":\"Cake\",\"color\":\"gray\",\"description\":null},{\"id\":\"4669ee35-6c7c-48f0-948f-d8c3cf8560a0\",\"name\":\"Biscuit\",\"color\":\"red\",\"description\":null},{\"id\":\"41a9ee6b-59ad-40df-adfb-4032ef2e4f86\",\"name\":\"Ingredient\",\"color\":\"default\",\"description\":null},{\"id\":\"5386da0a-63d5-4337-a456-ebaf62dcf162\",\"name\":\"Pasta\",\"color\":\"brown\",\"description\":null},{\"id\":\"862f1885-3569-4ff9-a1d4-147a6f5760c2\",\"name\":\"Dough\",\"color\":\"orange\",\"description\":null},{\"id\":\"89fb5b6d-c565-4604-8a60-663983f37273\",\"name\":\"Poultry\",\"color\":\"yellow\",\"description\":null},{\"id\":\"403c8036-3602-4bc5-9bf6-cf2680f4cd7e\",\"name\":\"Meat\",\"color\":\"purple\",\"description\":null},{\"id\":\"4c4fb6cf-b086-4ebc-918a-c75a92c9fee9\",\"name\":\"Pancakes\",\"color\":\"green\",\"description\":null},{\"id\":\"5982ab1f-963d-4ee7-aa90-3d3006a6f837\",\"name\":\"Rice\",\"color\":\"default\",\"description\":null},{\"id\":\"14ced879-9b83-40de-987a-9ba80e458365\",\"name\":\"Cookies\",\"color\":\"orange\",\"description\":null},{\"id\":\"bc8db32f-99c6-470c-aa7f-431f3559f4aa\",\"name\":\"Eggs\",\"color\":\"gray\",\"description\":null},{\"id\":\"c5500173-fb4c-4434-9860-00190596eb14\",\"name\":\"Stock\",\"color\":\"red\",\"description\":null}]}},\"Origin\":{\"id\":\"Q%7D%3C_\",\"name\":\"Origin\",\"type\":\"select\",\"select\":{\"options\":[{\"id\":\"YPVz\",\"name\":\"France\",\"color\":\"default\",\"description\":null},{\"id\":\"1750def8-36c6-4102-a924-0ce5327e6ebb\",\"name\":\"England\",\"color\":\"yellow\",\"description\":null},{\"id\":\"d15a0eb7-4892-4cca-87e6-d109925cd16b\",\"name\":\"Italy\",\"color\":\"red\",\"description\":null},{\"id\":\"e02348b9-2e18-4cc9-8863-ae734f49defe\",\"name\":\"Sweden\",\"color\":\"gray\",\"description\":null},{\"id\":\"df12a7f7-52d9-4022-8910-e7a390672dbd\",\"name\":\"China\",\"color\":\"pink\",\"description\":null},{\"id\":\"5dc9f5ce-3ef6-4819-a0af-209bb0e4d16f\",\"name\":\"Lebanon\",\"color\":\"brown\",\"description\":null},{\"id\":\"63f2cc1a-a4c7-4383-be8e-0dc573469b7c\",\"name\":\"Norway\",\"color\":\"blue\",\"description\":null},{\"id\":\"ff261e47-e62a-4726-8c74-904647484e2a\",\"name\":\"Morocco\",\"color\":\"purple\",\"description\":null},{\"id\":\"a8e74333-6abb-488d-8fcd-9eb8ae6212ca\",\"name\":\"USA\",\"color\":\"orange\",\"description\":null}]}},\"Difficulty\":{\"id\":\"oWhH\",\"name\":\"Difficulty\",\"type\":\"select\",\"select\":{\"options\":[{\"id\":\"C?fv\",\"name\":\"Easy\",\"color\":\"green\",\"description\":null},{\"id\":\"97704536-333a-44f2-8c9c-aabfc81c0912\",\"name\":\"Medium\",\"color\":\"orange\",\"description\":null},{\"id\":\"acfc70f6-ddde-410b-89ae-2a9104cd114c\",\"name\":\"Hard\",\"color\":\"red\",\"description\":null}]}},\"Source\":{\"id\":\"uv%5DN\",\"name\":\"Source\",\"type\":\"rich_text\",\"rich_text\":{}},\"Date\":{\"id\":\"%7BJ%5EA\",\"name\":\"Date\",\"type\":\"date\",\"date\":{}},\"Name\":{\"id\":\"title\",\"name\":\"Name\",\"type\":\"title\",\"title\":{}}},\"parent\":{\"type\":\"page_id\",\"page_id\":\"11adb8fb-d5bd-4277-bf98-12157c531f48\"},\"url\":\"https://www.notion.so/56dada1e4604428b9e2d7d1a8d2ad131\",\"public_url\":null,\"archived\":false,\"in_trash\":false,\"request_id\":\"dc1c1ce5-6698-4431-863c-c51d3ceb3d7f\"}"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-Ray:
+      - 8e3fbd23edd29418-LHR
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 17 Nov 2024 12:31:37 GMT
+      ETag:
+      - W/"eb1-3vVImx++SfHOVu2FbiLjvWyr8Yc"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=LpwPZNrA2CWGdxfivi7xOS7TvhOKN1gP14ZwSKzc5t8-1731846697-1.0.1.1-ojBjqI4zgDAchy3h2pqg9dXL6PnWw4oD.9EQRaLeAB2wuAvKLnvdbtFcqD.UhZUK9G9uVmO52.ina.qzDSNidg;
+        path=/; expires=Sun, 17-Nov-24 13:01:37 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=ErepORBwjpa4PFa5.jT2e08fjjoczAV9ABgl1qnfWb0-1731846697911-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - dc1c1ce5-6698-4431-863c-c51d3ceb3d7f
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

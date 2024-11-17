@@ -1,0 +1,10 @@
+.DS_Store
+**/venv/*
+__pycache__
+**/dist/*
+**/build/*
+**/pkg_build/*
+**/.ruff_cache/*
+*.pyc
+*.egg-info
+.coverage

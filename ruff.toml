@@ -1,0 +1,79 @@
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".ruff_cache",
+    ".venv",
+    "_build",
+    "build",
+    "dist",
+    "venv",
+    "tests/static",
+]
+
+line-length = 100 # Used by both linter and E501
+indent-width = 4
+output-format = "grouped"
+target-version = "py313"
+
+[lint]
+select = [
+    "A",     # flake8-builtins
+    "ARG",   # flake8-unused-arguments
+    "B",     # flake8-bugbear
+    "BLE",   # flake8-blind-except
+    "C4",    # flake8-comprehensions 
+    "COM",   # flake8-commas
+    "C90",   # mccabe (max-complexity)
+    # "D",     # pydocstyle
+    "E",     # pycodestyle errors
+    "ERA",   # eradicate
+    "F",     # pyflakes
+    "FLY",   # flynt
+    "I",     # isort
+    "INP",   # flake8-no-pep420
+    "ISC",   # flake8-implicit-str-concat
+    "N",     # pep8-naming
+    "PERF",  # Perflint
+    "PIE",   # flake8-pie
+    "PT",    # flake8-pytest-style
+    "PTH",   # flake8-use-pathlib
+    "SIM",   # flake8-simplify
+    "UP",    # pyupgrade
+    "W",     # pycodestyle warnings
+]
+
+ignore = [
+
+]
+# Allow fix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+[lint.mccabe]
+max-complexity = 10
+
+[lint.extend-per-file-ignores]
+"tests/*" = [
+    "D",       # pydocstyle
+    "E501",    # line too long
+    "INP001",  # implicit-namespace-package
+    "N",       # pep8-naming
+    "PERF",    # Perflint
+    "PIE794",  # duplicate-class-field-definition
+    "PT011",   # pytest-raises-too-broad
+]
+"**/__init__.py" = [
+    "F401",   # unused-import
+    "F403",   # undefined-local-with-import-star
+]
+
+[lint.pydocstyle]
+convention = "google"
+
+[format]
+quote-style = "single"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
