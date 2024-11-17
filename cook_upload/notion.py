@@ -65,7 +65,8 @@ class NotionActions:
 
         if matching_urls:
             raise TitleAlreadyUsedError(title, matching_urls)
-
+    
+    # TODO: need to do the steps one OpenAPI part is completed
     @validate_call
     def add_entry(
         self,
@@ -78,7 +79,11 @@ class NotionActions:
     ):
         self.is_title_used(title)
         new_query = self._create_new_page(
-            title=title, type_=type_, difficulty=difficulty.value, source=source, origin=origin,
+            title=title,
+            type_=type_,
+            difficulty=difficulty.value,
+            source=source,
+            origin=origin,
         )
         response = requests.post(
             NOTION_PAGES_API_URL,
