@@ -1,2 +1,2 @@
-from .notion import NotionActions  # noqa: I001
+from .notion import NotionActions, TitleAlreadyUsedError
 from .models import NotionDBMetadata

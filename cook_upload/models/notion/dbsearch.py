@@ -1,4 +1,4 @@
-from pydantic import Field
+from pydantic import Field, HttpUrl
 
 from .common_models import Columns, NotionModel
 
@@ -6,6 +6,7 @@ from .common_models import Columns, NotionModel
 class Result(NotionModel):
     id_: str = Field(alias='id')
     properties: Columns
+    url: HttpUrl
 
 
 class NotionDBSearch(NotionModel):

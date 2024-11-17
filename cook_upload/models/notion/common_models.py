@@ -1,8 +1,8 @@
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
 
 
 class NotionModel(BaseModel):
-    model_config = ConfigDict(extra='ignore')
+    model_config = ConfigDict(extra='allow')
 
 
 class IdName(NotionModel):
@@ -27,12 +27,19 @@ class SimpleColumn(NotionModel):
 
 
 class Title(NotionModel):
-    plain_text: str
+    plain_text: str = ''
 
 
 class NameColumn(NotionModel):
     type_: str = Field(alias='type')
-    title: list[Title] | dict | None = None
+    title: list[Title] = Field(default_factory=list[Title])
+
+    @field_validator('title', mode='before')
+    @classmethod
+    def validate_title(cls, title):
+        if title == {}:
+            return [Title(plain_text='')]
+        return title
 
 
 class Columns(NotionModel):
@@ -42,3 +49,4 @@ class Columns(NotionModel):
     source: SimpleColumn = Field(alias='Source')
     date: SimpleColumn = Field(alias='Date')
     name: NameColumn = Field(alias='Name')
+    # url: HttpUrl | None = None
