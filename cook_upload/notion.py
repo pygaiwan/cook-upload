@@ -1,8 +1,15 @@
+from copy import deepcopy
+
 import requests
 from pydantic import validate_call
 
-from .constants import NOTION_DB_API_URL, DishDifficulty
-from .models import NotionDBMetadata, NotionDBSearch
+from .constants import (
+    NEW_PAGE_QUERY_TEMPLATE,
+    NOTION_DB_API_URL,
+    NOTION_PAGES_API_URL,
+    DishDifficulty,
+)
+from .models import NotionDBMetadata, NotionDBSearch, NotionNewPage
 
 
 class TitleAlreadyUsedError(Exception):
@@ -59,6 +66,7 @@ class NotionActions:
         if matching_urls:
             raise TitleAlreadyUsedError(title, matching_urls)
 
+    @validate_call
     def add_entry(
         self,
         title: str,
@@ -68,8 +76,27 @@ class NotionActions:
         steps: str,
         origin: str = None,
     ):
-        try:
-            self.is_title_used(title)
-        except TitleAlreadyUsedError as e:
-            print(e)
-            raise
+        self.is_title_used(title)
+        new_query = self._create_new_page(
+            title=title, type_=type_, difficulty=difficulty.value, source=source, origin=origin,
+        )
+        response = requests.post(
+            NOTION_PAGES_API_URL,
+            headers=self.headers,
+            json=new_query.model_dump(by_alias=True, exclude_none=True),
+        )
+        response.raise_for_status()
+
+    def _create_new_page(self, *, title, type_, difficulty, source, origin=None):
+        data = deepcopy(NEW_PAGE_QUERY_TEMPLATE)
+        data['parent']['database_id'] = self.db_id
+        data['properties']['Name']['title'][0]['text']['content'] = title
+        data['properties']['Type']['select']['name'] = type_
+        if origin:
+            data['properties']['Origin']['select']['name'] = origin
+        else:
+            del data['properties']['Origin']
+        data['properties']['Difficulty']['select']['name'] = difficulty
+        data['properties']['Source']['rich_text'][0]['text']['content'] = source
+
+        return NotionNewPage.model_validate(data)

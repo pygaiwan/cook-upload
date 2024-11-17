@@ -1,6 +1,6 @@
 import pytest
 
-from cook_upload import NotionActions, TitleAlreadyUsedError
+from cook_upload import DishDifficulty, NotionActions, TitleAlreadyUsedError
 from cook_upload.models import NotionDBMetadata
 
 
@@ -34,5 +34,45 @@ class Test_NotionActions:
     def test_is_title_used_not_used(self, notion: NotionActions):
         assert notion.is_title_used(title='Moise') is None
 
-    # def test_add_entry(self, notion: NotionActions):
-    #     notion.add_entry({'title': 'Moise'})
+    def test_new_page_payload_check(self, notion: NotionActions):
+        expected = {
+            'parent': {'database_id': '56dada1e4604428b9e2d7d1a8d2ad131'},
+            'properties': {
+                'Name': {'title': [{'text': {'content': 'Moise'}}]},
+                'Type': {'select': {'name': 'Sweet'}},
+                'Origin': {'select': {'name': 'Korea'}},
+                'Difficulty': {'select': {'name': 'Hard'}},
+                'Source': {'rich_text': [{'text': {'content': 'Test'}}]},
+            },
+        }
+        data = notion._create_new_page(
+            title='Moise',
+            type_='Sweet',
+            origin='Korea',
+            difficulty='Hard',
+            source='Test',
+        )
+        assert data.model_dump(by_alias=True, exclude_none=True) == expected
+
+    def test_new_page_payload_check_without_origin(self, notion: NotionActions):
+        expected = {
+            'parent': {'database_id': '56dada1e4604428b9e2d7d1a8d2ad131'},
+            'properties': {
+                'Name': {'title': [{'text': {'content': 'Moise'}}]},
+                'Type': {'select': {'name': 'Sweet'}},
+                'Difficulty': {'select': {'name': 'Hard'}},
+                'Source': {'rich_text': [{'text': {'content': 'Test'}}]},
+            },
+        }
+        data = notion._create_new_page(
+            title='Moise',
+            type_='Sweet',
+            difficulty='Hard',
+            source='Test',
+        )
+        assert data.model_dump(by_alias=True, exclude_none=True) == expected
+
+    def test_add_entry_without_origin(self, notion: NotionActions):
+        notion.add_entry(
+            title='Moise', difficulty=DishDifficulty.easy, type_='Meat', steps='', source='asd',
+        )

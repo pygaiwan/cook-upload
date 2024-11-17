@@ -8,26 +8,31 @@ from .common_models import NotionModel
 class DbID(NotionModel):
     database_id: str
 
-
-class Title(NotionModel):
+class ContentModel(NotionModel):
     content: str
 
-
-class Name(NotionModel):
-    title: list[Title]
-
-
-class Properties(NotionModel):
-    name: Name = Field(alias='Name')
+class TextModel(NotionModel):
+    text: ContentModel
 
 
-class TextContent(NotionModel):
-    content: str
+class TitleModel(NotionModel):
+    title: list[TextModel]
+
+
+class NameModel(NotionModel):
+    name: str
+
+
+class SelectModel(NotionModel):
+    select: NameModel
+
+class RichTextModel(NotionModel):
+    rich_text: list[TextModel]
 
 
 class RichTextItem(NotionModel):
     type_: str = Field(alias='type')
-    text: TextContent
+    text: TextModel
 
 
 class HeadingContent(NotionModel):
@@ -57,8 +62,15 @@ Block = Annotated[
     Field(discriminator='type_'),
 ]
 
+class Properties(NotionModel):
+    name: TitleModel = Field(alias='Name')
+    type_: SelectModel = Field(alias='Type')
+    origin: SelectModel  | None = Field(alias='Origin', default=None)
+    difficulty: SelectModel = Field(alias='Difficulty')
+    source: RichTextModel = Field(alias='Source')
 
-class NewQueryModel(NotionModel):
+
+class NotionNewPage(NotionModel):
     parent: DbID
     properties: Properties
-    children: list[Block]
+    children: list[Block] | None = None
