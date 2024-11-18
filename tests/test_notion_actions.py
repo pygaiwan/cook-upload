@@ -71,12 +71,14 @@ class Test_NotionActions:
             source='Test',
         )
         assert data.model_dump(by_alias=True, exclude_none=True) == expected
-    
+
     @pytest.mark.vcr
     def test_add_entry_without_origin(self, notion: NotionActions):
         notion.add_entry(
-            title='Moise', difficulty=DishDifficulty.easy, type_='Meat', steps='', source='asd',
+            title='Moise',
+            difficulty=DishDifficulty.easy,
+            type_='Meat',
+            steps='',
+            source='asd',
         )
         assert len(notion.get_entry(title='Moise').results) == 1
-
-

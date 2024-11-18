@@ -7,6 +7,10 @@ NOTION_DB_ID = 'NOTION_DB_ID'
 NOTION_DB_API_URL = 'https://api.notion.com/v1/databases/{}'
 NOTION_PAGES_API_URL = 'https://api.notion.com/v1/pages'
 
+OPENAI_API_KEY = 'OPENAI_API_KEY'
+OPENAI_PROJECT_ID = 'OPENAI_PROJECT_ID'
+
+
 class DishDifficulty(Enum):
     easy = 'Easy'
     medium = 'Medium'
@@ -16,11 +20,26 @@ class DishDifficulty(Enum):
 NEW_PAGE_QUERY_TEMPLATE = {
     'parent': {'database_id': None},
     'properties': {
-        'Name': {'title': [{'text': {'content': None}}] },
+        'Name': {'title': [{'text': {'content': None}}]},
         'Type': {'select': {'name': None}},
         'Origin': {'select': {'name': None}},
         'Difficulty': {'select': {'name': None}},
         'Source': {'rich_text': [{'text': {'content': None}}]},
     },
     'children': None,
+}
+
+OPENAI_TEXT = """The attached image is a receipt for a dish. Extract the title, the steps and the
+ingredients and return them, exactly as they are in the model provided.
+Do not change or translate the text. """
+
+OPENAI_MESSAGE = {
+    'role': 'user',
+    'content': [
+        {'type': 'text', 'text': OPENAI_TEXT},
+        {
+            'type': 'image_url',
+            'image_url': {'url': None},
+        },
+    ],
 }

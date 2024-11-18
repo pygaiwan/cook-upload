@@ -1,2 +1,2 @@
-from .notion import NotionActions, TitleAlreadyUsedError, DishDifficulty
 from .models import NotionDBMetadata
+from .notion import DishDifficulty, NotionActions, TitleAlreadyUsedError

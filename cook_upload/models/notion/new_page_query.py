@@ -8,8 +8,10 @@ from .common_models import NotionModel
 class DbID(NotionModel):
     database_id: str
 
+
 class ContentModel(NotionModel):
     content: str
+
 
 class TextModel(NotionModel):
     text: ContentModel
@@ -25,6 +27,7 @@ class NameModel(NotionModel):
 
 class SelectModel(NotionModel):
     select: NameModel
+
 
 class RichTextModel(NotionModel):
     rich_text: list[TextModel]
@@ -62,10 +65,11 @@ Block = Annotated[
     Field(discriminator='type_'),
 ]
 
+
 class Properties(NotionModel):
     name: TitleModel = Field(alias='Name')
     type_: SelectModel = Field(alias='Type')
-    origin: SelectModel  | None = Field(alias='Origin', default=None)
+    origin: SelectModel | None = Field(alias='Origin', default=None)
     difficulty: SelectModel = Field(alias='Difficulty')
     source: RichTextModel = Field(alias='Source')
 

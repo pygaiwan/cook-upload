@@ -6,6 +6,8 @@ requires-python = ">=3.13"
 dependencies = [
     "requests",
     "pydantic",
+    "typer",
+    "openai"
 ]
 
 [build-system]
@@ -24,8 +26,5 @@ dev = [
     "pytest-vcr",
     "pytest-watch",
     "ruff",
-    "wheel==0.37.1",
-    "setuptools==61.0.0",
-    "typer",
 ]
 

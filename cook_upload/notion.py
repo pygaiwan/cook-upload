@@ -65,7 +65,7 @@ class NotionActions:
 
         if matching_urls:
             raise TitleAlreadyUsedError(title, matching_urls)
-    
+
     # TODO: need to do the steps one OpenAPI part is completed
     @validate_call
     def add_entry(
