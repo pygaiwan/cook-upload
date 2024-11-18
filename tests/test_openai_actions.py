@@ -2,10 +2,10 @@ from base64 import b64encode
 from pathlib import Path
 
 import pytest
-from openai import BaseModel
+from openai import BaseModel, OpenAI
 
+from cook_upload import parse_image
 from cook_upload.models import ImageRequest
-from cook_upload.openai_actions import OpenAIActions
 
 
 class Message(BaseModel):
@@ -42,15 +42,15 @@ class Test_OpenAIActions:
         assert ImageRequest.model_validate(data)
 
     @pytest.mark.vcr
-    def test_parse_image(self, openai: OpenAIActions):
+    def test_parse_image(self, openai):
         img = Path(__file__).parent.parent / 'image.jpg'
         base64_image = b64encode(img.read_bytes()).decode('utf-8')
-        title, ingredients, steps = openai.parse_image(base64_image)
+        title, ingredients, steps = parse_image(openai, base64_image)
         assert isinstance(title, str)
         assert isinstance(ingredients, str)
         assert isinstance(steps, str)
 
-    def test_parse_fails(self, openai: OpenAIActions, mocker):
+    def test_parse_fails(self, openai: OpenAI, mocker):
         response = {
             'id': 'chatcmpl-AV2E6tqg9DTGaUj4mtq3I35H38rTT',
             'choices': [
@@ -68,7 +68,7 @@ class Test_OpenAIActions:
         }
 
         response = MockResponse.model_validate(response)
-        mocker.patch.object(openai.client.beta.chat.completions, 'parse', return_value=response)
+        mocker.patch.object(openai.beta.chat.completions, 'parse', return_value=response)
 
         with pytest.raises(ValueError):
-            openai.parse_image(b'abc')
+            parse_image(openai, b'abc')

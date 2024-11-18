@@ -1,10 +1,10 @@
 import os
 
 import pytest
+from openai import OpenAI
 
 from cook_upload import NotionActions
 from cook_upload.constants import NOTION_API_KEY, NOTION_DB_ID, OPENAI_API_KEY, OPENAI_PROJECT_ID
-from cook_upload.openai_actions import OpenAIActions
 
 
 @pytest.fixture(scope='session')
@@ -20,5 +20,5 @@ def notion() -> NotionActions:
 
 
 @pytest.fixture
-def openai() -> OpenAIActions:
-    return OpenAIActions(os.getenv(OPENAI_API_KEY), os.getenv(OPENAI_PROJECT_ID))
+def openai() -> OpenAI:
+    return OpenAI(api_key=os.getenv(OPENAI_API_KEY), project=os.getenv(OPENAI_PROJECT_ID))
