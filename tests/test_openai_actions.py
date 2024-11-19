@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 from openai import BaseModel, OpenAI
 
-from cook_upload import parse_image, ImageRequest
+from cook_upload import ImageRequest, parse_image
 
 
 class Message(BaseModel):

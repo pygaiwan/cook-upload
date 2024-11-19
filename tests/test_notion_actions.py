@@ -1,7 +1,11 @@
 import pytest
 
-from cook_upload import DishDifficulty, NotionActions, TitleAlreadyUsedError
-from cook_upload.models import NotionDBMetadata
+from cook_upload import (
+    DishDifficulty,
+    NotionActions,
+    NotionDBMetadata,
+    TitleAlreadyUsedError,
+)
 
 
 class Test_NotionActions:
