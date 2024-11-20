@@ -5,5 +5,5 @@ from .models import (
     NotionDBSearch,
     NotionNewPage,
 )
-from .notion import DishDifficulty, NotionActions, TitleAlreadyUsedError
+from .notion_actions import DishDifficulty, NotionActions, TitleAlreadyUsedError
 from .openai_actions import parse_image

@@ -1,7 +1,8 @@
-from copy import deepcopy
 
 import requests
 from pydantic import validate_call
+
+from cook_upload.models.notion_dbnewpage_model import SelectModel
 
 from .constants import (
     NEW_PAGE_QUERY_TEMPLATE,
@@ -92,16 +93,16 @@ class NotionActions:
         )
         response.raise_for_status()
 
-    def _create_new_page(self, *, title, type_, difficulty, source, origin=None):
-        data = deepcopy(NEW_PAGE_QUERY_TEMPLATE)
-        data['parent']['database_id'] = self.db_id
-        data['properties']['Name']['title'][0]['text']['content'] = title
-        data['properties']['Type']['select']['name'] = type_
+    def _create_new_page(self, *, title, type_, difficulty, source, date=None, origin=None):
+        model = NotionNewPage.model_validate(NEW_PAGE_QUERY_TEMPLATE)
+        model.parent.database_id = self.db_id
+        model.properties.name.title[0].text.content = title
+        model.properties.type_.select.name = type_
         if origin:
-            data['properties']['Origin']['select']['name'] = origin
-        else:
-            del data['properties']['Origin']
-        data['properties']['Difficulty']['select']['name'] = difficulty
-        data['properties']['Source']['rich_text'][0]['text']['content'] = source
-
-        return NotionNewPage.model_validate(data)
+            model.properties.origin = SelectModel.model_validate({'select': {'name': origin}})
+        model.properties.difficulty.select.name = difficulty
+        model.properties.source.rich_text[0].text.content = source
+        model.properties.date = date
+        return NotionNewPage.model_validate_json(
+            model.model_dump_json(by_alias=True, exclude_none=True, exclude_unset=True),
+        )

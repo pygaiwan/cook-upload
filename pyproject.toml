@@ -28,3 +28,7 @@ dev = [
     "ruff",
 ]
 
+[project.scripts]
+cook = "cook_upload:main"
+
+

@@ -37,11 +37,6 @@ class RichText(NotionModel):
 class SourceModel(NotionModel):
     rich_text: list[RichText]
 
-
-class DateModel(NotionModel):
-    unknwon: str
-
-
 # TODO remove None on Date. Must be mandatory
 # NOTE, Origin is not mandatory
 class Properties(NotionModel):
@@ -49,7 +44,7 @@ class Properties(NotionModel):
     origin: SelectModel | None = Field(alias='Origin', default=None)
     difficulty: SelectModel = Field(alias='Difficulty')
     source: SourceModel = Field(alias='Source')
-    date: DateModel | None = Field(alias='Date', default=None)
+    date: str | None = Field(alias='Date', default=None)
     name: NameModel = Field(alias='Name')
 
 

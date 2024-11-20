@@ -18,13 +18,14 @@ class DishDifficulty(Enum):
 
 
 NEW_PAGE_QUERY_TEMPLATE = {
-    'parent': {'database_id': None},
+    'parent': {'database_id': ''},
     'properties': {
-        'Name': {'title': [{'text': {'content': None}}]},
-        'Type': {'select': {'name': None}},
-        'Origin': {'select': {'name': None}},
-        'Difficulty': {'select': {'name': None}},
-        'Source': {'rich_text': [{'text': {'content': None}}]},
+        'Name': {'title': [{'text': {'content': ''}}]},
+        'Type': {'select': {'name': ''}},
+        'Origin': None,
+        'Difficulty': {'select': {'name': ''}},
+        'Source': {'rich_text': [{'text': {'content': ''}}]},
+        'Date': None,
     },
     'children': None,
 }

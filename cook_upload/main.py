@@ -1,46 +1,52 @@
-from base64 import b64encode
-from os import environ
+import importlib
+import os
+from collections import namedtuple
 from pathlib import Path
 
 import typer
-from iso3166 import countries
-from openai import OpenAI
 
-from .constants import DishDifficulty
-from .openai_actions import parse_image
+Command = namedtuple('Command', ['cmd', 'name', 'cmd_help', 'cmd_rich_help'])
 
-app = typer.Typer()
-openai_instance = OpenAI(
-    api_key=environ.get('OPENAI_API_KEY'),
-    project=environ.get('OPENAI_PROJECT_ID'),
+PKG_NAME = __name__.split('.')[0]
+CMD_FOLDER = (Path(__file__).parent / 'commands').absolute()
+
+
+def get_commands() -> list[Command]:
+    commands = []
+    for filename in os.listdir(CMD_FOLDER):
+        if filename.endswith('.py') and filename.startswith('cmd_'):
+            module_name = filename[:-3]
+            module = importlib.import_module(f'.commands.{module_name}', package=PKG_NAME)
+            commands.append(
+                Command(
+                    module.app,
+                    module.CMD_NAME,
+                    module.CMD_HELP,
+                    module.CMD_RICH_HELP,
+                ),
+            )
+
+    return commands
+
+
+app = typer.Typer(
+    no_args_is_help=True,
+    rich_markup_mode='markdown',
+    context_settings={'help_option_names': ['-h', '--help']},
 )
 
-
-def _validate_country(origin: str) -> str:
-    try:
-        return countries.get(origin.lower()).name
-    except KeyError as e:
-        raise ValueError(f'The country {origin} is not valid') from e
-
-
-def _validate_dish_type(type_: str) -> str:
-    return type_
+for command in get_commands():
+    app.add_typer(
+        command.cmd,
+        name=command.name,
+        help=command.cmd_help,
+        rich_help_panel=command.cmd_rich_help,
+    )
 
 
-@app.command()
-# i think origin has to be an option
-def upload(image_path: str, difficulty: DishDifficulty, type_: str, origin: str = None):
-    if origin:
-        country_name = _validate_country(origin)
-    dish_type = _validate_dish_type(type_)
-
-    path = Path(image_path)
-    image = b64encode(path.read_bytes()).decode('utf-8')
-    title, ingredients, steps = parse_image(openai_instance, base64_image=image)
-    print(title)
-    print(ingredients)
-    print(steps)
+@app.callback(invoke_without_command=True)
+def main():
+    pass
 
 
-if __name__ == '__main__':
-    app()
+app()
