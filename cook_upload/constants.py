@@ -11,11 +11,10 @@ OPENAI_API_KEY = 'OPENAI_API_KEY'
 OPENAI_PROJECT_ID = 'OPENAI_PROJECT_ID'
 
 
-class DishDifficulty(Enum):
+class DishDifficulty(str, Enum):
     easy = 'Easy'
     medium = 'Medium'
     hard = 'Hard'
-
 
 NEW_PAGE_QUERY_TEMPLATE = {
     'parent': {'database_id': ''},

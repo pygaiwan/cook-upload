@@ -3,14 +3,13 @@ from os import environ
 from pathlib import Path
 from typing import Annotated
 
-import typer
 from iso3166 import countries
 from openai import OpenAI
-from typer import Typer
+from typer import Argument, Option
 
 from cook_upload.notion_actions import NotionActions
 
-from ..constants import (
+from .constants import (
     NOTION_API_KEY,
     NOTION_DB_ID,
     OPENAI_API_KEY,
@@ -23,7 +22,6 @@ CMD_HELP = 'Upload image and text to Notion'
 CMD_RICH_HELP = 'Upload utility'
 
 
-app = Typer(no_args_is_help=True)
 openai_instance = OpenAI(
     api_key=environ.get(OPENAI_API_KEY),
     project=environ.get(OPENAI_PROJECT_ID),
@@ -46,13 +44,12 @@ def _validate_dish_type(type_: str) -> str:
     return type_
 
 
-@app.command(help=CMD_HELP)
 # i think origin has to be an option
 def upload(
-    image_path: Annotated[str, typer.Argument()],
-    difficulty: Annotated[DishDifficulty, typer.Argument()],
-    type_: Annotated[str, typer.Argument()],
-    origin: Annotated[str, typer.Option()] = None,
+    image_path: Annotated[str, Argument()],
+    difficulty: Annotated[DishDifficulty, Argument()],
+    type_: Annotated[str, Argument()],
+    origin: Annotated[str, Option()] = None,
 ):
     if origin:
         country_name = _validate_country(origin)

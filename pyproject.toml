@@ -29,6 +29,6 @@ dev = [
 ]
 
 [project.scripts]
-cook = "cook_upload:main"
+cook = "cook_upload.main:app"
 
 
