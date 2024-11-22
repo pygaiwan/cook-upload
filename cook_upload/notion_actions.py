@@ -1,16 +1,14 @@
-
+import json
 import requests
 from pydantic import validate_call
-
-from cook_upload.models.notion_dbnewpage_model import SelectModel
-
+from pathlib import Path
 from .constants import (
     NEW_PAGE_QUERY_TEMPLATE,
     NOTION_DB_API_URL,
     NOTION_PAGES_API_URL,
-    DishDifficulty,
 )
 from .models import NotionDBMetadata, NotionDBSearch, NotionNewPage
+from .models.notion_dbnewpage_model import SelectModel
 
 
 class TitleAlreadyUsedError(Exception):
@@ -67,33 +65,46 @@ class NotionActions:
         if matching_urls:
             raise TitleAlreadyUsedError(title, matching_urls)
 
-    # TODO: need to do the steps one OpenAPI part is completed
-    @validate_call
     def add_entry(
         self,
         title: str,
-        difficulty: DishDifficulty,
+        difficulty: str,
         type_: str,
         source: str,
+        ingredients: str,
         steps: str,
-        origin: str = None,
+        origin: str,
+        date: str,
     ):
+        params = {k: v for k, v in locals().items() if k != 'self'}
         self.is_title_used(title)
-        new_query = self._create_new_page(
-            title=title,
-            type_=type_,
-            difficulty=difficulty.value,
-            source=source,
-            origin=origin,
+        new_query = self._create_new_page(**params)
+        new_query = new_query.model_dump(
+            by_alias=True,
+            exclude_none=True,
+            exclude_unset=True,
+            exclude_defaults=True,
         )
-        response = requests.post(
-            NOTION_PAGES_API_URL,
-            headers=self.headers,
-            json=new_query.model_dump(by_alias=True, exclude_none=True),
-        )
-        response.raise_for_status()
+        try:
+            response = requests.post(NOTION_PAGES_API_URL, headers=self.headers, json=new_query)
+            response.raise_for_status()
+        except requests.HTTPError as e:
+            print(e.response.json())
+            (Path(__file__).parent.parent / 'errors.log').write_text(json.dumps(new_query))
+            raise
 
-    def _create_new_page(self, *, title, type_, difficulty, source, date=None, origin=None):
+    def _create_new_page(
+        self,
+        *,
+        title: str,
+        difficulty: str,
+        type_: str,
+        source: str,
+        ingredients: str,
+        steps: str,
+        origin: str,
+        date: str,
+    ):
         model = NotionNewPage.model_validate(NEW_PAGE_QUERY_TEMPLATE)
         model.parent.database_id = self.db_id
         model.properties.name.title[0].text.content = title
@@ -102,7 +113,11 @@ class NotionActions:
             model.properties.origin = SelectModel.model_validate({'select': {'name': origin}})
         model.properties.difficulty.select.name = difficulty
         model.properties.source.rich_text[0].text.content = source
-        model.properties.date = date
+        if date:
+            model.properties.date.date.start = date
+        model.children[1].paragraph.rich_text[0].text.content = ingredients
+        model.children[3].paragraph.rich_text[0].text.content = steps
+
         return NotionNewPage.model_validate_json(
             model.model_dump_json(by_alias=True, exclude_none=True, exclude_unset=True),
         )

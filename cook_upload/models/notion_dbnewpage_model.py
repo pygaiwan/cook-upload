@@ -10,7 +10,7 @@ class Parent(NotionModel):
 
 
 class Content(NotionModel):
-    content: str
+    content: str | None = None
 
 
 class Title(NotionModel):
@@ -37,14 +37,23 @@ class RichText(NotionModel):
 class SourceModel(NotionModel):
     rich_text: list[RichText]
 
-# TODO remove None on Date. Must be mandatory
-# NOTE, Origin is not mandatory
+class Start(NotionModel):
+    start: str | None = None
+
+class Date(NotionModel):
+    date: Start | None = None
+
 class Properties(NotionModel):
+    """Page properties.
+
+    See reference: https://developers.notion.com/reference/page-property-values
+    """
+
     type_: SelectModel = Field(alias='Type')
     origin: SelectModel | None = Field(alias='Origin', default=None)
     difficulty: SelectModel = Field(alias='Difficulty')
     source: SourceModel = Field(alias='Source')
-    date: str | None = Field(alias='Date', default=None)
+    date: Date | None = Field(alias='Date', default=None)
     name: NameModel = Field(alias='Name')
 
 
@@ -76,8 +85,7 @@ Block = Annotated[
 ]
 
 
-# TODO remove None from child. Must be mandatory
 class NotionNewPage(NotionModel):
-    parent: Parent
+    parent: Parent 
     properties: Properties
-    children: list[Block] | None = None
+    children: list[Block] = []

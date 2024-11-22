@@ -5,8 +5,6 @@ import pytest
 from openai import BaseModel, OpenAI
 
 from cook_upload import ImageRequest, parse_image
-from cook_upload.constants import NEW_PAGE_QUERY_TEMPLATE
-from cook_upload.models.notion_dbnewpage_model import NotionNewPage
 
 
 class Message(BaseModel):

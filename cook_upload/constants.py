@@ -16,6 +16,7 @@ class DishDifficulty(str, Enum):
     medium = 'Medium'
     hard = 'Hard'
 
+
 NEW_PAGE_QUERY_TEMPLATE = {
     'parent': {'database_id': ''},
     'properties': {
@@ -24,9 +25,31 @@ NEW_PAGE_QUERY_TEMPLATE = {
         'Origin': None,
         'Difficulty': {'select': {'name': ''}},
         'Source': {'rich_text': [{'text': {'content': ''}}]},
-        'Date': None,
+        'Date': {'date': {'start': None}},
     },
-    'children': None,
+   'children': [
+        {
+            'object': 'block',
+            'type': 'heading_2',
+            'heading_2': {'rich_text': [{'type': 'text', 'text': {'content': 'Ingredients'}}]},
+        },
+        {
+            'object': 'block',
+            'type': 'paragraph',
+            'paragraph': {'rich_text': [{'type': 'text', 'text': {'content': None}}]},
+        },
+        {
+            'object': 'block',
+            'type': 'heading_2',
+            'heading_2': {'rich_text': [{'type': 'text', 'text': {'content': 'Steps'}}]},
+        },
+        {
+            'object': 'block',
+            'type': 'paragraph',
+            'paragraph': {'rich_text': [{'type': 'text', 'text': {'content': None}}]},
+        },
+
+    ],
 }
 
 OPENAI_TEXT = """The attached image is a receipt for a dish. Extract the title, the steps and the
@@ -43,3 +66,7 @@ OPENAI_MESSAGE = {
         },
     ],
 }
+
+
+DATETIME_STR = '%Y%m%d'
+DATETIME_FORMATTED = '%Y-%m-%d'

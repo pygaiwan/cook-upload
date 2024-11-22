@@ -1,3 +1,4 @@
+from .constants import DishDifficulty
 from .models import (
     ExtractionResponse,
     ImageRequest,
@@ -5,5 +6,5 @@ from .models import (
     NotionDBSearch,
     NotionNewPage,
 )
-from .notion_actions import DishDifficulty, NotionActions, TitleAlreadyUsedError
+from .notion_actions import NotionActions, TitleAlreadyUsedError
 from .openai_actions import parse_image

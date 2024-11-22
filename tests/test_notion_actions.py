@@ -40,13 +40,38 @@ class Test_NotionActions:
 
     def test_new_page_payload_check(self, notion: NotionActions):
         expected = {
+            'children': [
+                {
+                    'heading_2': {
+                        'rich_text': [{'text': {'content': 'Ingredients'}, 'type': 'text'}]
+                    },
+                    'object': 'block',
+                    'type': 'heading_2',
+                },
+                {
+                    'object': 'block',
+                    'paragraph': {'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}]},
+                    'type': 'paragraph',
+                },
+                {
+                    'heading_2': {'rich_text': [{'text': {'content': 'Steps'}, 'type': 'text'}]},
+                    'object': 'block',
+                    'type': 'heading_2',
+                },
+                {
+                    'object': 'block',
+                    'paragraph': {'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}]},
+                    'type': 'paragraph',
+                },
+            ],
             'parent': {'database_id': '56dada1e4604428b9e2d7d1a8d2ad131'},
             'properties': {
-                'Name': {'title': [{'text': {'content': 'Moise'}}]},
-                'Type': {'select': {'name': 'Sweet'}},
-                'Origin': {'select': {'name': 'Korea'}},
+                'Date': {'date': {'start': '2024-21-12'}},
                 'Difficulty': {'select': {'name': 'Hard'}},
+                'Name': {'title': [{'text': {'content': 'Moise'}}]},
+                'Origin': {'select': {'name': 'Korea'}},
                 'Source': {'rich_text': [{'text': {'content': 'Test'}}]},
+                'Type': {'select': {'name': 'Sweet'}},
             },
         }
         data = notion._create_new_page(
@@ -55,24 +80,57 @@ class Test_NotionActions:
             origin='Korea',
             difficulty='Hard',
             source='Test',
+            ingredients='a,b,c',
+            steps='a,b,c',
+            date='2024-21-12',
         )
         assert data.model_dump(by_alias=True, exclude_none=True) == expected
 
     def test_new_page_payload_check_without_origin(self, notion: NotionActions):
         expected = {
+            'children': [
+                {
+                    'heading_2': {
+                        'rich_text': [{'text': {'content': 'Ingredients'}, 'type': 'text'}]
+                    },
+                    'object': 'block',
+                    'type': 'heading_2',
+                },
+                {
+                    'object': 'block',
+                    'paragraph': {'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}]},
+                    'type': 'paragraph',
+                },
+                {
+                    'heading_2': {'rich_text': [{'text': {'content': 'Steps'}, 'type': 'text'}]},
+                    'object': 'block',
+                    'type': 'heading_2',
+                },
+                {
+                    'object': 'block',
+                    'paragraph': {'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}]},
+                    'type': 'paragraph',
+                },
+            ],
             'parent': {'database_id': '56dada1e4604428b9e2d7d1a8d2ad131'},
             'properties': {
-                'Name': {'title': [{'text': {'content': 'Moise'}}]},
-                'Type': {'select': {'name': 'Sweet'}},
+                'Date': {'date': {'start': '2024-21-12'}},
                 'Difficulty': {'select': {'name': 'Hard'}},
+                'Name': {'title': [{'text': {'content': 'Moise'}}]},
                 'Source': {'rich_text': [{'text': {'content': 'Test'}}]},
+                'Type': {'select': {'name': 'Sweet'}},
             },
         }
+
         data = notion._create_new_page(
             title='Moise',
             type_='Sweet',
             difficulty='Hard',
+            ingredients='a,b,c',
+            steps='a,b,c',
+            date='2024-21-12',
             source='Test',
+            origin=None,
         )
         assert data.model_dump(by_alias=True, exclude_none=True) == expected
 
@@ -84,5 +142,8 @@ class Test_NotionActions:
             type_='Meat',
             steps='',
             source='asd',
+            ingredients='a,b,c',
+            date='2024-21-12',
+            origin=None,
         )
         assert len(notion.get_entry(title='Moise').results) == 1

@@ -1,55 +1,99 @@
+import mimetypes
 from datetime import datetime
+from pathlib import Path
 from typing import Annotated
 
+from iso3166 import countries
 from typer import Argument, Option, Typer
 
-from cook_upload.constants import DishDifficulty
+from .constants import DATETIME_FORMATTED, DATETIME_STR, DishDifficulty
+from .upload import upload
+
+TODAY = datetime.today().date().strftime(DATETIME_STR)
 
 app = Typer(
     no_args_is_help=True,
     rich_markup_mode='markdown',
     context_settings={'help_option_names': ['-h', '--help']},
 )
-TODAY = datetime.today().date().strftime('%d%m%Y')
+
+
+def _validate_country(country: str) -> str:
+    try:
+        return countries.get(country.lower()).name
+    except KeyError as e:
+        raise ValueError(f'The country {country} is not valid') from e
+
+
+def _validate_dish_type(type_: str) -> str:
+    """This is meant to validate that the type is one of those allowed in Notion"""
+    # i need to read the DBMetadata and get all the types
+    return type_
+
+
+def _validate_image(image_path: Path) -> Path:
+    if 'image/jpeg' in mimetypes.guess_type(image_path):
+        return image_path
+    raise ValueError(f'{image_path} should be a JPG')
+
+
+def _validate_date(date: str | None) -> str | None:
+    match date:
+        case None:
+            return None
+        case '':
+            return TODAY
+        case _:
+            return date
 
 
 @app.command()
 def main(
-    image_path: Annotated[str, Argument(help='The image name or path to process.', exists=True)],
+    image_path: Annotated[
+        Path,
+        Argument(help='The image name or path to process.', exists=True, readable=True),
+    ],
     difficulty: Annotated[
-        DishDifficulty, Argument(case_sensitive=False, help='The difficulty of the dish.'),
+        DishDifficulty,
+        Argument(case_sensitive=False, help='The difficulty of the dish.'),
     ],
     source: Annotated[
-        str, Option('--source', '-s', help='Source from where the receipt has been taken from'),
+        str,
+        Option('--source', '-s', help='Source from where the receipt has been taken from.'),
     ],
-    country: Annotated[str, Option('--country', '-c', help='Country of origin of the receipt.')],
     type_: Annotated[str, Option('--type', '-t', help='Type of receipt')],
+    country: Annotated[
+        str,
+        Option('--country', '-c', help='Country of origin of the receipt.'),
+    ] = None,
     date: Annotated[
         str,
         Option(
             '--date',
             '-d',
             help='Date where the receipt has been done. Example 21122024.',
+            callback=_validate_date,
         ),
-    ] = TODAY,
+    ] = None,
 ):
-    """
-    Default command to handle upload if no subcommand is specified.
-    """
     titled_difficulty = difficulty.value.title()
-    print(titled_difficulty)
-    print(image_path)
-    print(source)
-    print(date)
-    print(country)
-    print(type_)
+    source = source.title()
+    if country:
+        country = _validate_country(country)
 
-    # upload(
-    #     image_path=image_path,
-    #     difficulty=difficulty,
-    #     type_=type_,
-    #     origin=origin,
-    # )
+    if date:
+        date = datetime.strptime(date, DATETIME_STR).strftime(DATETIME_FORMATTED)
+    type_ = _validate_dish_type(type_)
+    image_path = _validate_image(image_path)
+
+    upload(
+        image_path=image_path,
+        difficulty=titled_difficulty,
+        type_=type_,
+        country=country,
+        source=source,
+        date=date,
+    )
 
 
 if __name__ == '__main__':

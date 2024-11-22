@@ -1,0 +1,168 @@
+interactions:
+- request:
+    body: '{"filter": {"property": "Name", "title": {"equals": "Avocado sauce"}}}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - dummy
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '70'
+      Content-Type:
+      - application/json
+      Notion-Version:
+      - '2022-06-28'
+      User-Agent:
+      - python-requests/2.32.3
+    method: POST
+    uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131/query
+  response:
+    body:
+      string: '{"object":"list","results":[],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"6b174d6f-d89e-4458-9bc8-47d36d723ba0"}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-Ray:
+      - 8e6b9fbef9a879b9-LHR
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 22 Nov 2024 20:21:07 GMT
+      ETag:
+      - W/"a6-AjVbEvp0T6eK6iAZmbds8+q8GgM"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=MvpkNX6cDO_WUPmFWuV7JRx4lIe7tfN3WaZdgF1O.tU-1732306867-1.0.1.1-fJi0P5PjRi5zsMBiM0LUU0wd.eIDUYUoop8hlWS9n3dK1InfvOPp_HGZOk0JVUO_d.LKnFNC1V9iiSQWKVsNAQ;
+        path=/; expires=Fri, 22-Nov-24 20:51:07 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=2mMpVaTi14x1kwhtrUtP.ZVSYfhhgdXMxoHSzSB70Cs-1732306867450-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - 6b174d6f-d89e-4458-9bc8-47d36d723ba0
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"parent": {"database_id": "56dada1e4604428b9e2d7d1a8d2ad131"}, "properties":
+      {"Type": {"select": {"name": "Meat"}}, "Difficulty": {"select": {"name": "Easy"}},
+      "Source": {"rich_text": [{"text": {"content": "Leith P.56"}}]}, "Date": {"date":
+      {}}, "Name": {"title": [{"text": {"content": "Avocado sauce"}}]}}, "children":
+      [{"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text":
+      {"content": "Ingredients"}, "type": "text"}]}}, {"object": "block", "type":
+      "paragraph", "paragraph": {"rich_text": [{"text": {"content": "1 ripe avocado\n2
+      tbsp mayonnaise (see page 116)\n1 lime\n\u00bd green chilli\n\u00bd bunch of
+      coriander\n1 tbsp olive oil\nSalt, caster sugar and freshly ground black pepper"},
+      "type": "text"}]}}, {"object": "block", "type": "heading_2", "heading_2": {"rich_text":
+      [{"text": {"content": "Steps"}, "type": "text"}]}}, {"object": "block", "type":
+      "paragraph", "paragraph": {"rich_text": [{"text": {"content": "1 Put the avocado
+      flesh and mayonnaise in a blender. Finely grate the zest from the lime and squeeze
+      the juice. Add half the lime zest and juice to the blender.\n\n2 Deseed and
+      roughly chop the chilli, roughly chop the coriander stalks and add to the mixture
+      with the olive oil. Blend until smooth.\n\n3 Add more lime juice or water as
+      required to make a light, coating consistency dressing. Season well with salt
+      and pepper and a little sugar. Just before serving, coarsely chop a handful
+      of the coriander leaves and stir through the salsa."}, "type": "text"}]}}]}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - dummy
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1513'
+      Content-Type:
+      - application/json
+      Notion-Version:
+      - '2022-06-28'
+      User-Agent:
+      - python-requests/2.32.3
+    method: POST
+    uri: https://api.notion.com/v1/pages
+  response:
+    body:
+      string: '{"object":"error","status":400,"code":"validation_error","message":"body
+        failed validation: body.properties.Date.date.start should be defined, instead
+        was `undefined`.","request_id":"ec1ef9ef-ffe7-4b22-ba1a-e46dfbc8ba65"}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-Ray:
+      - 8e6b9fc1ed5d632e-LHR
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '221'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 22 Nov 2024 20:21:07 GMT
+      ETag:
+      - W/"dd-KZPOAsuL7AD/xZ5GDxuSa01EWmM"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=4DamzEby7CD180k8tJHZxIRrzcTUy.8ThdkHEvrasG8-1732306867-1.0.1.1-XlNm5AR0x1HVPl8osVLF9rfkgPjTA0VjKEhSq2YBc2Z_CQIfymnAWyT6060j2trzz8JE0TtVXR7rTQDUImi3jg;
+        path=/; expires=Fri, 22-Nov-24 20:51:07 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=nbMB5_qKHQmc.MQ7n2xKiRKMLEc4VM.sl48ryQRqAAw-1732306867819-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - ec1ef9ef-ffe7-4b22-ba1a-e46dfbc8ba65
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+    status:
+      code: 400
+      message: Bad Request
+version: 1
