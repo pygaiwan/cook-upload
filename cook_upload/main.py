@@ -4,12 +4,10 @@ from pathlib import Path
 from typing import Annotated
 
 from iso3166 import countries
-from typer import Argument, Option, Typer
+from typer import Argument, BadParameter, Option, Typer
 
 from .constants import DATETIME_FORMATTED, DATETIME_STR, DishDifficulty
 from .upload import upload
-
-TODAY = datetime.today().date().strftime(DATETIME_STR)
 
 app = Typer(
     no_args_is_help=True,
@@ -22,7 +20,7 @@ def _validate_country(country: str) -> str:
     try:
         return countries.get(country.lower()).name
     except KeyError as e:
-        raise ValueError(f'The country {country} is not valid') from e
+        raise BadParameter(f'The country {country} is not valid') from e
 
 
 def _validate_dish_type(type_: str) -> str:
@@ -32,9 +30,13 @@ def _validate_dish_type(type_: str) -> str:
 
 
 def _validate_image(image_path: Path) -> Path:
-    if 'image/jpeg' in mimetypes.guess_type(image_path):
-        return image_path
-    raise ValueError(f'{image_path} should be a JPG')
+    if (
+        not image_path.exists()
+        or not image_path.is_file()
+        or 'image/jpeg' not in mimetypes.guess_type(image_path)
+    ):
+        raise BadParameter(f"The file '{image_path}' does not exist or is not a valid file.")
+    return image_path
 
 
 def _validate_date(date: str | None) -> str | None:
@@ -42,9 +44,9 @@ def _validate_date(date: str | None) -> str | None:
         case None:
             return None
         case '':
-            return TODAY
+            return datetime.today().date().strftime(DATETIME_STR)
         case _:
-            return date
+            return datetime.strptime(date, DATETIME_STR).strftime(DATETIME_FORMATTED)
 
 
 @app.command()
@@ -85,8 +87,6 @@ def main(
     if country:
         country = _validate_country(country)
 
-    if date:
-        date = datetime.strptime(date, DATETIME_STR).strftime(DATETIME_FORMATTED)
     type_ = _validate_dish_type(type_)
     image_path = _validate_image(image_path)
 

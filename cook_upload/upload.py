@@ -1,12 +1,9 @@
 from base64 import b64encode
-from datetime import datetime
 from os import environ
 from pathlib import Path
 
 import vcr
 from openai import OpenAI
-
-from cook_upload.models.notion_dbnewpage_model import NotionNewPage
 
 from .constants import (
     NOTION_API_KEY,
@@ -34,10 +31,9 @@ def upload(
     type_: str,
     country: str,
     source: str,
-    date:str,
-    force: bool
+    date: str,
+    force: bool,
 ):
-    print(locals())
     image = b64encode(image_path.read_bytes()).decode('utf-8')
     with vcr.use_cassette('baserequest.yaml'):
         title, ingredients, steps = parse_image(openai_instance, base64_image=image)

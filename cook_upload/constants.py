@@ -27,7 +27,7 @@ NEW_PAGE_QUERY_TEMPLATE = {
         'Source': {'rich_text': [{'text': {'content': ''}}]},
         'Date': {'date': {'start': None}},
     },
-   'children': [
+    'children': [
         {
             'object': 'block',
             'type': 'heading_2',
@@ -48,7 +48,6 @@ NEW_PAGE_QUERY_TEMPLATE = {
             'type': 'paragraph',
             'paragraph': {'rich_text': [{'type': 'text', 'text': {'content': None}}]},
         },
-
     ],
 }
 

@@ -34,7 +34,6 @@ commands = [
 @pytest.mark.parametrize('commands', commands, ids=['no_source', 'no_difficulty', 'no_type'])
 def test_app_invoke_should_error_missing_params(commands):
     results = runner.invoke(app, commands)
-    print(results.output)
     assert results.exit_code == 2
 
 

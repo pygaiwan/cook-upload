@@ -43,7 +43,7 @@ class Test_NotionActions:
             'children': [
                 {
                     'heading_2': {
-                        'rich_text': [{'text': {'content': 'Ingredients'}, 'type': 'text'}]
+                        'rich_text': [{'text': {'content': 'Ingredients'}, 'type': 'text'}],
                     },
                     'object': 'block',
                     'type': 'heading_2',
@@ -91,7 +91,7 @@ class Test_NotionActions:
             'children': [
                 {
                     'heading_2': {
-                        'rich_text': [{'text': {'content': 'Ingredients'}, 'type': 'text'}]
+                        'rich_text': [{'text': {'content': 'Ingredients'}, 'type': 'text'}],
                     },
                     'object': 'block',
                     'type': 'heading_2',

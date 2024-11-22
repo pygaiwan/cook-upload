@@ -37,11 +37,14 @@ class RichText(NotionModel):
 class SourceModel(NotionModel):
     rich_text: list[RichText]
 
+
 class Start(NotionModel):
     start: str | None = None
 
+
 class Date(NotionModel):
     date: Start | None = None
+
 
 class Properties(NotionModel):
     """Page properties.
@@ -86,6 +89,6 @@ Block = Annotated[
 
 
 class NotionNewPage(NotionModel):
-    parent: Parent 
+    parent: Parent
     properties: Properties
     children: list[Block] = []
