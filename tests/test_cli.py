@@ -6,8 +6,8 @@ from cook_upload.main import app
 runner = CliRunner()
 
 commands = [
-    ['image.jpg', 'Easy', '-s', 'Leith p.56', '-d', '20242112', '-c', 'Italy', '-t', 'Meat'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-d', '20242112', '-c', 'Italy', '-t', 'Meat'],
+    ['image.jpg', 'Easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
+    ['image.jpg', 'easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
     ['image.jpg', 'easy', '-s', 'Leith p.56', '-c', 'Italy', '-t', 'Meat'],
     ['image.jpg', 'easy', '-s', 'Leith p.56', '-t', 'Meat'],
 ]
@@ -25,9 +25,9 @@ def test_app_invoke_works(commands):
 
 
 commands = [
-    ['image.jpg', 'easy', '-d', '20242112', '-c', 'Italy', '-t', 'Meat'],
-    ['image.jpg', '-s', 'Leith p.56', '-d', '20242112', '-c', 'Italy', '-t', 'Meat'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-d', '20242112', '-c', 'Italy'],
+    ['image.jpg', 'easy', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
+    ['image.jpg', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
+    ['image.jpg', 'easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy'],
 ]
 
 
@@ -47,7 +47,7 @@ def test_app_unexisting_file_should_fail(tmp_path):
             '-s',
             'Leith p.56',
             '-d',
-            '20242112',
+            '20241221',
             '-c',
             'Italy',
             '-t',

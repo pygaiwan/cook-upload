@@ -85,6 +85,9 @@ class NotionActions:
             exclude_unset=True,
             exclude_defaults=True,
         )
+
+        if not date:
+            del new_query['properties']['Date']
         try:
             response = requests.post(NOTION_PAGES_API_URL, headers=self.headers, json=new_query)
             response.raise_for_status()
