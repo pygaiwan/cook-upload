@@ -1,0 +1,173 @@
+interactions:
+- request:
+    body: '{"filter": {"property": "Name", "title": {"equals": "Avocado sauce"}}}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - dummy
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '70'
+      Content-Type:
+      - application/json
+      Notion-Version:
+      - '2022-06-28'
+      User-Agent:
+      - python-requests/2.32.3
+    method: POST
+    uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131/query
+  response:
+    body:
+      string: '{"object":"list","results":[],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"0e6b993a-9cd0-4c5f-88f8-6b963fae01f5"}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-Ray:
+      - 8e6bbe8fac93cd67-LHR
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 22 Nov 2024 20:42:10 GMT
+      ETag:
+      - W/"a6-kh0Hjb4AHngfjK9vCFo3a23k+0o"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=kbfGfW9_0zSAvCWvIYjmZymygGp0c5tCHNntl_zoJOM-1732308130-1.0.1.1-GQ2LsCFlVVz0IH9CQ.VtaWx2Nd0sER4YERzQ2UuQVcps1Wq4udTta7ZwhXWvfR9iOUajAaacC2HuXB.gG4tELA;
+        path=/; expires=Fri, 22-Nov-24 21:12:10 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=PKKzG9zLbNpyCPvuY7yX2MiKgC3kZPCbRw7q27TuKas-1732308130046-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - 0e6b993a-9cd0-4c5f-88f8-6b963fae01f5
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"parent": {"database_id": "56dada1e4604428b9e2d7d1a8d2ad131"}, "properties":
+      {"Type": {"select": {"name": "Meat"}}, "Origin": {"select": {"name": "Italy"}},
+      "Difficulty": {"select": {"name": "Easy"}}, "Source": {"rich_text": [{"text":
+      {"content": "Leith P.56"}}]}, "Date": {"date": {"start": "2024-12-21"}}, "Name":
+      {"title": [{"text": {"content": "Avocado sauce"}}]}}, "children": [{"object":
+      "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content":
+      "Ingredients"}, "type": "text"}]}}, {"object": "block", "type": "paragraph",
+      "paragraph": {"rich_text": [{"text": {"content": "1 ripe avocado\n2 tbsp mayonnaise
+      (see page 116)\n1 lime\n\u00bd green chilli\n\u00bd bunch of coriander\n1 tbsp
+      olive oil\nSalt, caster sugar and freshly ground black pepper"}, "type": "text"}]}},
+      {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text":
+      {"content": "Steps"}, "type": "text"}]}}, {"object": "block", "type": "paragraph",
+      "paragraph": {"rich_text": [{"text": {"content": "1 Put the avocado flesh and
+      mayonnaise in a blender. Finely grate the zest from the lime and squeeze the
+      juice. Add half the lime zest and juice to the blender.\n\n2 Deseed and roughly
+      chop the chilli, roughly chop the coriander stalks and add to the mixture with
+      the olive oil. Blend until smooth.\n\n3 Add more lime juice or water as required
+      to make a light, coating consistency dressing. Season well with salt and pepper
+      and a little sugar. Just before serving, coarsely chop a handful of the coriander
+      leaves and stir through the salsa."}, "type": "text"}]}}]}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - dummy
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1575'
+      Content-Type:
+      - application/json
+      Notion-Version:
+      - '2022-06-28'
+      User-Agent:
+      - python-requests/2.32.3
+    method: POST
+    uri: https://api.notion.com/v1/pages
+  response:
+    body:
+      string: '{"object":"page","id":"14653a83-c0e8-81bc-b37c-f9bfa7e37bc8","created_time":"2024-11-22T20:42:00.000Z","last_edited_time":"2024-11-22T20:42:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":{"id":"d15a0eb7-4892-4cca-87e6-d109925cd16b","name":"Italy","color":"red"}},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"Leith
+        P.56","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Leith
+        P.56","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":{"start":"2024-12-21","end":null,"time_zone":null}},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Avocado
+        sauce","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Avocado
+        sauce","href":null}]}},"url":"https://www.notion.so/Avocado-sauce-14653a83c0e881bcb37cf9bfa7e37bc8","public_url":null,"request_id":"6b504354-7a6f-4251-8c7a-efc53d880bc6"}'
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-Ray:
+      - 8e6bbe95bb5e79bf-LHR
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 22 Nov 2024 20:42:11 GMT
+      ETag:
+      - W/"639-fod5hyGzGJN5bDB9TmnXEdYidPU"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=jvaPvKZ0Zq9OhU6zbbmUid1F8nXrWWFxZC.nbPFfsec-1732308131-1.0.1.1-OM35lqUs4MaIE_w9H8VBd_saFrALM.R0jg6O5PKhAmwkj4NCO_XkAER81rtiRiajWL6Sr_9iXcgStDgHp2yZ.Q;
+        path=/; expires=Fri, 22-Nov-24 21:12:11 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=tlUnWOyfD.prdcj_bSh5D6ZQ.PwOe3q1w00cSX40YOM-1732308131515-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - 6b504354-7a6f-4251-8c7a-efc53d880bc6
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

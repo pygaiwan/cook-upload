@@ -6,10 +6,10 @@ from cook_upload.main import app
 runner = CliRunner()
 
 commands = [
-    ['image.jpg', 'Easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-c', 'Italy', '-t', 'Meat'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-t', 'Meat'],
+    ['image.jpg', 'Easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat', '-f'],
+    ['image.jpg', 'easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat', '-f'],
+    ['image.jpg', 'easy', '-s', 'Leith p.56', '-c', 'Italy', '-t', 'Meat', '-f'],
+    ['image.jpg', 'easy', '-s', 'Leith p.56', '-t', 'Meat', '-f'],
 ]
 
 

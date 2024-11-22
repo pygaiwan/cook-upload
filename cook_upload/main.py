@@ -75,6 +75,10 @@ def main(
             callback=_validate_date,
         ),
     ] = None,
+    force: Annotated[
+        bool,
+        Option('--force', '-f', help='Force the name duplication if a title is already present'),
+    ] = False,
 ):
     titled_difficulty = difficulty.value.title()
     source = source.title()
@@ -93,6 +97,7 @@ def main(
         country=country,
         source=source,
         date=date,
+        force=force,
     )
 
 

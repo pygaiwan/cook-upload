@@ -1,7 +1,9 @@
 import json
+from pathlib import Path
+
 import requests
 from pydantic import validate_call
-from pathlib import Path
+
 from .constants import (
     NEW_PAGE_QUERY_TEMPLATE,
     NOTION_DB_API_URL,
@@ -52,7 +54,7 @@ class NotionActions:
         return NotionDBSearch.model_validate(response.json())
 
     @validate_call
-    def is_title_used(self, title: str) -> None:
+    def is_title_used(self, title: str, force: bool = False) -> None:
         data = self.get_entry(title)
         lower_title = title.lower()
         matching_urls = [
@@ -63,7 +65,9 @@ class NotionActions:
         ]
 
         if matching_urls:
-            raise TitleAlreadyUsedError(title, matching_urls)
+            if not force:
+                raise TitleAlreadyUsedError(title, matching_urls)
+            print('Warning, title {} already present, -f is in use, adding the page.')
 
     def add_entry(
         self,
@@ -75,9 +79,10 @@ class NotionActions:
         steps: str,
         origin: str,
         date: str,
+        force: bool = False,
     ):
-        params = {k: v for k, v in locals().items() if k != 'self'}
-        self.is_title_used(title)
+        params = {k: v for k, v in locals().items() if k not in ('self', 'force')}
+        self.is_title_used(title, force)
         new_query = self._create_new_page(**params)
         new_query = new_query.model_dump(
             by_alias=True,

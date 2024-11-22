@@ -35,15 +35,13 @@ def upload(
     country: str,
     source: str,
     date:str,
+    force: bool
 ):
     print(locals())
     image = b64encode(image_path.read_bytes()).decode('utf-8')
     with vcr.use_cassette('baserequest.yaml'):
         title, ingredients, steps = parse_image(openai_instance, base64_image=image)
 
-    print(title)
-    print(ingredients)
-    print(steps)
     notion_instance.add_entry(
         title=title,
         difficulty=difficulty,
@@ -53,4 +51,5 @@ def upload(
         source=source,
         ingredients=ingredients,
         steps=steps,
+        force=force,
     )
