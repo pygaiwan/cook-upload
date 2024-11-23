@@ -158,7 +158,7 @@ class NotionActions:
             steps (str): The steps involved.
             origin (str): The origin of the recipe or content.
             date (str): The date for the entry.
-            force (bool, optional): If True, forces adding the page even if the title already exists.
+            force (bool, optional): If True, forces adding the page.
 
         Raises:
             requests.HTTPError: If the request to add the new page fails.
