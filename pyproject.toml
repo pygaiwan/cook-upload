@@ -9,7 +9,8 @@ dependencies = [
     "typer",
     "openai",
     "loguru",
-    "dotenv",
+    "python-dotenv",
+    "iso3166",
 ]
 
 [build-system]
