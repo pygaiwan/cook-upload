@@ -240,3 +240,8 @@ class NotionActions:
         return NotionNewPage.model_validate_json(
             model.model_dump_json(by_alias=True, exclude_none=True, exclude_unset=True),
         )
+
+    @property
+    def dish_type(self) -> list[str]:
+        data = self.get_db_metadata()
+        return [option.name.lower() for option in data.properties.type_.select.options]

@@ -38,6 +38,7 @@ class Test_NotionActions:
     def test_is_title_used_not_used(self, notion: NotionActions):
         assert notion.is_title_used(title='Moise', source='moise') is None
 
+    @pytest.mark.vcr
     def test_new_page_payload_check(self, notion: NotionActions):
         expected = {
             'children': [
@@ -66,7 +67,7 @@ class Test_NotionActions:
             ],
             'parent': {'database_id': '56dada1e4604428b9e2d7d1a8d2ad131'},
             'properties': {
-                'Date': {'date': {'start': '2024-21-12'}},
+                'Date': {'date': {'start': '2024-12-21'}},
                 'Difficulty': {'select': {'name': 'Hard'}},
                 'Name': {'title': [{'text': {'content': 'Moise'}}]},
                 'Origin': {'select': {'name': 'Korea'}},
@@ -82,10 +83,11 @@ class Test_NotionActions:
             source='Test',
             ingredients='a,b,c',
             steps='a,b,c',
-            date='2024-21-12',
+            date='2024-12-21',
         )
         assert data.model_dump(by_alias=True, exclude_none=True) == expected
-
+    
+    @pytest.mark.vcr
     def test_new_page_payload_check_without_origin(self, notion: NotionActions):
         expected = {
             'children': [
@@ -114,7 +116,7 @@ class Test_NotionActions:
             ],
             'parent': {'database_id': '56dada1e4604428b9e2d7d1a8d2ad131'},
             'properties': {
-                'Date': {'date': {'start': '2024-21-12'}},
+                'Date': {'date': {'start': '2024-12-21'}},
                 'Difficulty': {'select': {'name': 'Hard'}},
                 'Name': {'title': [{'text': {'content': 'Moise'}}]},
                 'Source': {'rich_text': [{'text': {'content': 'Test'}}]},
@@ -128,7 +130,7 @@ class Test_NotionActions:
             difficulty='Hard',
             ingredients='a,b,c',
             steps='a,b,c',
-            date='2024-21-12',
+            date='2024-12-21',
             source='Test',
             origin=None,
         )
@@ -143,7 +145,14 @@ class Test_NotionActions:
             steps='',
             source='asd',
             ingredients='a,b,c',
-            date='2024-21-12',
+            date='2024-12-21',
             origin=None,
         )
         assert len(notion.get_entry(title='Moise').results) == 1
+
+    @pytest.mark.vcr
+    def test_dish_type(self, notion: NotionActions):
+        data = notion.dish_type
+        to_be_found = ['pasta', 'dough', 'poultry', 'meat', 'pancakes']
+
+        assert all(x in data for x in to_be_found)

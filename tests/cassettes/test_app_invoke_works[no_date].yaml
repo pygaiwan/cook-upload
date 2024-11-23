@@ -1,5 +1,77 @@
 interactions:
 - request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - dummy
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Notion-Version:
+      - '2022-06-28'
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131
+  response:
+    body:
+      string: "{\"object\":\"database\",\"id\":\"56dada1e-4604-428b-9e2d-7d1a8d2ad131\",\"cover\":null,\"icon\":{\"type\":\"emoji\",\"emoji\":\"\U0001F4D6\"},\"created_time\":\"2021-02-23T16:20:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"9823e3c7-7622-4acd-a752-78077928d05f\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"9823e3c7-7622-4acd-a752-78077928d05f\"},\"last_edited_time\":\"2024-11-22T20:33:00.000Z\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Receipts\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Receipts\",\"href\":null}],\"description\":[],\"is_inline\":true,\"properties\":{\"Type\":{\"id\":\"%3A%3CxB\",\"name\":\"Type\",\"type\":\"select\",\"select\":{\"options\":[{\"id\":\"76d61d55-cd7f-4155-b459-17f2b045a453\",\"name\":\"Base\",\"color\":\"pink\",\"description\":null},{\"id\":\"bf2fffea-2abd-4f2c-9e1c-37bf23273378\",\"name\":\"Sweet\",\"color\":\"blue\",\"description\":null},{\"id\":\"9a5788ed-5896-492e-9d88-0f70d4156cd1\",\"name\":\"Cake\",\"color\":\"gray\",\"description\":null},{\"id\":\"4669ee35-6c7c-48f0-948f-d8c3cf8560a0\",\"name\":\"Biscuit\",\"color\":\"red\",\"description\":null},{\"id\":\"41a9ee6b-59ad-40df-adfb-4032ef2e4f86\",\"name\":\"Ingredient\",\"color\":\"default\",\"description\":null},{\"id\":\"5386da0a-63d5-4337-a456-ebaf62dcf162\",\"name\":\"Pasta\",\"color\":\"brown\",\"description\":null},{\"id\":\"862f1885-3569-4ff9-a1d4-147a6f5760c2\",\"name\":\"Dough\",\"color\":\"orange\",\"description\":null},{\"id\":\"89fb5b6d-c565-4604-8a60-663983f37273\",\"name\":\"Poultry\",\"color\":\"yellow\",\"description\":null},{\"id\":\"403c8036-3602-4bc5-9bf6-cf2680f4cd7e\",\"name\":\"Meat\",\"color\":\"purple\",\"description\":null},{\"id\":\"4c4fb6cf-b086-4ebc-918a-c75a92c9fee9\",\"name\":\"Pancakes\",\"color\":\"green\",\"description\":null},{\"id\":\"5982ab1f-963d-4ee7-aa90-3d3006a6f837\",\"name\":\"Rice\",\"color\":\"default\",\"description\":null},{\"id\":\"14ced879-9b83-40de-987a-9ba80e458365\",\"name\":\"Cookies\",\"color\":\"orange\",\"description\":null},{\"id\":\"bc8db32f-99c6-470c-aa7f-431f3559f4aa\",\"name\":\"Eggs\",\"color\":\"gray\",\"description\":null},{\"id\":\"c5500173-fb4c-4434-9860-00190596eb14\",\"name\":\"Stock\",\"color\":\"red\",\"description\":null}]}},\"Origin\":{\"id\":\"Q%7D%3C_\",\"name\":\"Origin\",\"type\":\"select\",\"select\":{\"options\":[{\"id\":\"YPVz\",\"name\":\"France\",\"color\":\"default\",\"description\":null},{\"id\":\"1750def8-36c6-4102-a924-0ce5327e6ebb\",\"name\":\"England\",\"color\":\"yellow\",\"description\":null},{\"id\":\"d15a0eb7-4892-4cca-87e6-d109925cd16b\",\"name\":\"Italy\",\"color\":\"red\",\"description\":null},{\"id\":\"e02348b9-2e18-4cc9-8863-ae734f49defe\",\"name\":\"Sweden\",\"color\":\"gray\",\"description\":null},{\"id\":\"df12a7f7-52d9-4022-8910-e7a390672dbd\",\"name\":\"China\",\"color\":\"pink\",\"description\":null},{\"id\":\"5dc9f5ce-3ef6-4819-a0af-209bb0e4d16f\",\"name\":\"Lebanon\",\"color\":\"brown\",\"description\":null},{\"id\":\"63f2cc1a-a4c7-4383-be8e-0dc573469b7c\",\"name\":\"Norway\",\"color\":\"blue\",\"description\":null},{\"id\":\"ff261e47-e62a-4726-8c74-904647484e2a\",\"name\":\"Morocco\",\"color\":\"purple\",\"description\":null},{\"id\":\"a8e74333-6abb-488d-8fcd-9eb8ae6212ca\",\"name\":\"USA\",\"color\":\"orange\",\"description\":null},{\"id\":\"9f0cf5a4-c6e5-44ad-89b8-3a2b90353c24\",\"name\":\"Korea\",\"color\":\"green\",\"description\":null}]}},\"Difficulty\":{\"id\":\"oWhH\",\"name\":\"Difficulty\",\"type\":\"select\",\"select\":{\"options\":[{\"id\":\"C?fv\",\"name\":\"Easy\",\"color\":\"green\",\"description\":null},{\"id\":\"97704536-333a-44f2-8c9c-aabfc81c0912\",\"name\":\"Medium\",\"color\":\"orange\",\"description\":null},{\"id\":\"acfc70f6-ddde-410b-89ae-2a9104cd114c\",\"name\":\"Hard\",\"color\":\"red\",\"description\":null}]}},\"Source\":{\"id\":\"uv%5DN\",\"name\":\"Source\",\"type\":\"rich_text\",\"rich_text\":{}},\"Date\":{\"id\":\"%7BJ%5EA\",\"name\":\"Date\",\"type\":\"date\",\"date\":{}},\"Name\":{\"id\":\"title\",\"name\":\"Name\",\"type\":\"title\",\"title\":{}}},\"parent\":{\"type\":\"page_id\",\"page_id\":\"11adb8fb-d5bd-4277-bf98-12157c531f48\"},\"url\":\"https://www.notion.so/56dada1e4604428b9e2d7d1a8d2ad131\",\"public_url\":null,\"archived\":false,\"in_trash\":false,\"request_id\":\"897a5a8b-34c9-4bbe-919f-90581c488763\"}"
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-Ray:
+      - 8e73fa4e8cf2636b-LHR
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 23 Nov 2024 20:41:02 GMT
+      ETag:
+      - W/"f13-IpEEFh3uzN/8pt1bIMdDi7waSnc"
+      Server:
+      - cloudflare
+      Set-Cookie:
+      - __cf_bm=OLbk8SAV9.ojJkZx9o_BfvtHUITyy2qLTUB39sBud2Q-1732394462-1.0.1.1-gWZMeXlngtqzL1I5W_uf0Hx0TaoeCr7ihx3hYUxw_5S_Ibg3ufjGjRgRUSIbydK6sN14Uz7Q1h1kxQ2ScnNDRQ;
+        path=/; expires=Sat, 23-Nov-24 21:11:02 GMT; domain=.notion.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=MkjuhSHeaDzaAR8iuKHXExBk81jJFzQC5JX79eIPja4-1732394462798-0.0.1.1-604800000;
+        path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept-Encoding
+      content-security-policy:
+      - default-src 'none'
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      x-content-type-options:
+      - nosniff
+      x-dns-prefetch-control:
+      - 'off'
+      x-download-options:
+      - noopen
+      x-frame-options:
+      - SAMEORIGIN
+      x-notion-request-id:
+      - 897a5a8b-34c9-4bbe-919f-90581c488763
+      x-permitted-cross-domain-policies:
+      - none
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
     body: '{"filter": {"property": "Name", "title": {"equals": "Avocado sauce"}}}'
     headers:
       Accept:
@@ -22,12 +94,20 @@ interactions:
     uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131/query
   response:
     body:
-      string: '{"object":"list","results":[],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"312caaba-c433-4f46-8543-6be15ab687c9"}'
+      string: '{"object":"list","results":[{"object":"page","id":"14753a83-c0e8-8190-a3da-c509b3759793","created_time":"2024-11-23T20:41:00.000Z","last_edited_time":"2024-11-23T20:41:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":{"id":"d15a0eb7-4892-4cca-87e6-d109925cd16b","name":"Italy","color":"red"}},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"Leith
+        P.56","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Leith
+        P.56","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":{"start":"2024-12-21","end":null,"time_zone":null}},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Avocado
+        sauce","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Avocado
+        sauce","href":null}]}},"url":"https://www.notion.so/Avocado-sauce-14753a83c0e88190a3dac509b3759793","public_url":null},{"object":"page","id":"14753a83-c0e8-8192-9615-df98d804f90c","created_time":"2024-11-23T20:40:00.000Z","last_edited_time":"2024-11-23T20:40:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":{"id":"d15a0eb7-4892-4cca-87e6-d109925cd16b","name":"Italy","color":"red"}},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"Leith
+        P.56","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Leith
+        P.56","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":{"start":"2024-12-21","end":null,"time_zone":null}},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Avocado
+        sauce","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Avocado
+        sauce","href":null}]}},"url":"https://www.notion.so/Avocado-sauce-14753a83c0e881929615df98d804f90c","public_url":null}],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"4149b808-da68-4381-b996-f9da25084129"}'
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-Ray:
-      - 8e6bc1423c806421-LHR
+      - 8e73fa50fbc94596-LHR
       Connection:
       - keep-alive
       Content-Encoding:
@@ -35,16 +115,16 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 22 Nov 2024 20:44:00 GMT
+      - Sat, 23 Nov 2024 20:41:03 GMT
       ETag:
-      - W/"a6-Dkbn23+88LAlrrV2SCzhdOwU0vw"
+      - W/"cb1-CJm8sveyncLwdpK/RkAMMQMWKR4"
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=hZ.vUtl_ffNAuwEUupMNqoGA9YgVHKUnxmK1OMpbark-1732308240-1.0.1.1-eZMNmZOLEK6x.DxcFx9stJId5oIhkz8HVeWZThtctkudnTfalsf6FazJQBLK1ipJdr3tnhN99ZANJQUyhGz_dA;
-        path=/; expires=Fri, 22-Nov-24 21:14:00 GMT; domain=.notion.com; HttpOnly;
+      - __cf_bm=0aukV1BXs63ntDJZP02wInDH4r5X19Hd8IMiWOtS2vM-1732394463-1.0.1.1-0v6dCrCU578yNKhvgF8rTFJrGNgoWB5P8WwCn_9oe2bLlgelbht_E7qHJIlcgVBqcAPXfSc1tm6JBe4kXKAZYA;
+        path=/; expires=Sat, 23-Nov-24 21:11:03 GMT; domain=.notion.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=.fV8YVTcjv4LYY8kCMkTVIF8PdCeSkd2oHBvG5Q9p78-1732308240023-0.0.1.1-604800000;
+      - _cfuvid=6C2OhbOvwjjrNRT4gvx1ONl50K14YzGfojhQTV9pQjM-1732394463180-0.0.1.1-604800000;
         path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -65,7 +145,7 @@ interactions:
       x-frame-options:
       - SAMEORIGIN
       x-notion-request-id:
-      - 312caaba-c433-4f46-8543-6be15ab687c9
+      - 4149b808-da68-4381-b996-f9da25084129
       x-permitted-cross-domain-policies:
       - none
       x-xss-protection:
@@ -115,16 +195,16 @@ interactions:
     uri: https://api.notion.com/v1/pages
   response:
     body:
-      string: '{"object":"page","id":"14653a83-c0e8-8198-8c03-f26cff56c64c","created_time":"2024-11-22T20:44:00.000Z","last_edited_time":"2024-11-22T20:44:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":{"id":"d15a0eb7-4892-4cca-87e6-d109925cd16b","name":"Italy","color":"red"}},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"Leith
+      string: '{"object":"page","id":"14753a83-c0e8-81b5-8ec9-e81fbbed8dd6","created_time":"2024-11-23T20:41:00.000Z","last_edited_time":"2024-11-23T20:41:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":{"id":"d15a0eb7-4892-4cca-87e6-d109925cd16b","name":"Italy","color":"red"}},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"Leith
         P.56","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Leith
         P.56","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":null},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Avocado
         sauce","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Avocado
-        sauce","href":null}]}},"url":"https://www.notion.so/Avocado-sauce-14653a83c0e881988c03f26cff56c64c","public_url":null,"request_id":"33954506-7b2c-4fd5-ba60-cb866403df5d"}'
+        sauce","href":null}]}},"url":"https://www.notion.so/Avocado-sauce-14753a83c0e881b58ec9e81fbbed8dd6","public_url":null,"request_id":"bbc6de70-764d-4134-8a66-84d3add611e2"}'
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-Ray:
-      - 8e6bc1452de79489-LHR
+      - 8e73fa534e7679ba-LHR
       Connection:
       - keep-alive
       Content-Encoding:
@@ -132,16 +212,16 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 22 Nov 2024 20:44:00 GMT
+      - Sat, 23 Nov 2024 20:41:04 GMT
       ETag:
-      - W/"60b-eci4haYZI/DR7tBEtaS5dp4J4+c"
+      - W/"60b-5awAIDpeZaHxlQtWPj6kpjYzAIs"
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=DJ5W.sEb9ChuDifAJ9Kj9VLwfBmzo3NjcL9z9X8p_tg-1732308240-1.0.1.1-QeLd0n7QswndokCBMewDpmVGryFKe8edHcCx9fw9160ix0hUZAjDK1viV9rmQqPpWHgDca_s.6v71mBEqQcW7g;
-        path=/; expires=Fri, 22-Nov-24 21:14:00 GMT; domain=.notion.com; HttpOnly;
+      - __cf_bm=cCvK7dEa32Pl9MDy83ukDPuImfk7i75SsmHLc5eVNAc-1732394464-1.0.1.1-RU5IVM7QQMC8X9GvJn8UhkZydYHxDgvH206BMFBHllW4LRsFKLvvbdzYFW5ZhUJAol2yWE2G0LtUQX9i4pVrCw;
+        path=/; expires=Sat, 23-Nov-24 21:11:04 GMT; domain=.notion.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=jdNj0guxEWih1L4_t9O88eBBgRw5tOa1VxJbsMNVuQs-1732308240799-0.0.1.1-604800000;
+      - _cfuvid=R6hD7_yMywikJbvGqrxWL4fiwQH8ELJLz65OYJp3vcw-1732394464050-0.0.1.1-604800000;
         path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -162,7 +242,7 @@ interactions:
       x-frame-options:
       - SAMEORIGIN
       x-notion-request-id:
-      - 33954506-7b2c-4fd5-ba60-cb866403df5d
+      - bbc6de70-764d-4134-8a66-84d3add611e2
       x-permitted-cross-domain-policies:
       - none
       x-xss-protection:

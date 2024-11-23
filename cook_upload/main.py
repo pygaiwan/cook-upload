@@ -78,7 +78,11 @@ def _validate_dish_type(type_: str) -> str:
     Returns:
         str: The validated dish type.
     """
-    return type_
+    if type_.lower() not in notion_instance.dish_type:
+        msg = f'The type {type_} is not allowed. Add it in Notion first.'
+        logger.error(msg)
+        raise BadParameter(msg)
+    return type_.title()
 
 
 def _validate_image(image_path: Path) -> Path:

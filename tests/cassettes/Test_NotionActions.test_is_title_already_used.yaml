@@ -24,12 +24,12 @@ interactions:
     body:
       string: '{"object":"list","results":[{"object":"page","id":"d4251acf-eb2d-4f65-9809-543ca7524094","created_time":"2021-06-16T20:26:00.000Z","last_edited_time":"2021-06-16T20:45:00.000Z","created_by":{"object":"user","id":"9823e3c7-7622-4acd-a752-78077928d05f"},"last_edited_by":{"object":"user","id":"9823e3c7-7622-4acd-a752-78077928d05f"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"bf2fffea-2abd-4f2c-9e1c-37bf23273378","name":"Sweet","color":"blue"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":{"id":"5dc9f5ce-3ef6-4819-a0af-209bb0e4d16f","name":"Lebanon","color":"brown"}},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"97704536-333a-44f2-8c9c-aabfc81c0912","name":"Medium","color":"orange"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"Lebanon
         Cookbookp pg 413","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Lebanon
-        Cookbookp pg 413","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":null},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Baklava","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Baklava","href":null}]}},"url":"https://www.notion.so/Baklava-d4251acfeb2d4f659809543ca7524094","public_url":null}],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"4700f2f4-e459-411c-98b5-eb5fe711cf06"}'
+        Cookbookp pg 413","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":null},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Baklava","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Baklava","href":null}]}},"url":"https://www.notion.so/Baklava-d4251acfeb2d4f659809543ca7524094","public_url":null}],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"abdb8b93-921c-4ba4-871d-f876b677595d"}'
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-Ray:
-      - 8e40e5a8eef106f9-LHR
+      - 8e73f8034dd56514-LHR
       Connection:
       - keep-alive
       Content-Encoding:
@@ -37,16 +37,16 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sun, 17 Nov 2024 15:54:03 GMT
+      - Sat, 23 Nov 2024 20:39:28 GMT
       ETag:
-      - W/"6ad-Rs4ngI4Qun+3SHkc9SnGN+6PrYU"
+      - W/"6ad-pBBcBu6VFOyMlnRKAezs+fW/D9c"
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=wi3iYHk7sMQ0WBkM3EC4OnOdu4JIFMVN26DJnzQ2GBk-1731858843-1.0.1.1-EZrDANkhZaLVDyqONG2vQLi8nz0_DD9c9E8eftfOE237YeyMNxUe7qgESWsJEE6ph9XR_bY2nKoJtSOLVukl0w;
-        path=/; expires=Sun, 17-Nov-24 16:24:03 GMT; domain=.notion.com; HttpOnly;
+      - __cf_bm=rzTrozkTLfo87zUXuT191QDQ20tlBPe5VZwjjy97ujA-1732394368-1.0.1.1-jR_tpth1tj_UeGJqf3G7BkghhYUX0hQSKnne0WvE6_JriF9N5bfe_MX31ec.qD7itsGwRkl6Que2hp1e18QB0Q;
+        path=/; expires=Sat, 23-Nov-24 21:09:28 GMT; domain=.notion.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=8sYLwWjLVfnvQWMxHKz31tSwtZ_UuLPrmq8_NczdLu4-1731858843507-0.0.1.1-604800000;
+      - _cfuvid=HG448lNS1AZU7Xlj_gGPV8d1JMbAr6kOBj8Wphh3e1k-1732394368941-0.0.1.1-604800000;
         path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -67,7 +67,7 @@ interactions:
       x-frame-options:
       - SAMEORIGIN
       x-notion-request-id:
-      - 4700f2f4-e459-411c-98b5-eb5fe711cf06
+      - abdb8b93-921c-4ba4-871d-f876b677595d
       x-permitted-cross-domain-policies:
       - none
       x-xss-protection:
