@@ -57,8 +57,17 @@ class NotionActions:
 
         Returns:
             NotionDBMetadata: The metadata of the Notion database.
+
+        Raises:
+            requests.HTTPError: If the request to retrieve the metadata fails.
         """
-        response = requests.get(NOTION_DB_API_URL.format(self.db_id), headers=self.headers)
+        try:
+            response = requests.get(NOTION_DB_API_URL.format(self.db_id), headers=self.headers)
+            response.raise_for_status()
+        except requests.HTTPError as e:
+            msg = f'Failed to get database metadata. Error {e.response.text}'
+            logger.error(msg)
+            raise
         return NotionDBMetadata.model_validate(response.json())
 
     @validate_call
@@ -82,9 +91,9 @@ class NotionActions:
             )
             response.raise_for_status()
         except HTTPError as e:
-            msg = f'Failed to get page. Error {e}'
+            msg = f'Failed to get page. Error {e.response.text}'
             logger.error(msg)
-            raise e
+            raise
 
         logger.debug(f'Validated page with {title} and got {response.json()}')
         return NotionDBSearch.model_validate(response.json())
@@ -112,11 +121,14 @@ class NotionActions:
         ]
 
         if matching_urls:
-            logger.warning(
-                f'Title {title} and {source} already added. If -f is used, the page will be added.',
-            )
-
-            if not force:
+            if force:
+                logger.warning(
+                    f'Title {title} and {source} already added, but proceeding due to force flag.',
+                )
+            else:
+                logger.warning(
+                    f'Title {title} and {source} already added. Operation will be stopped unless force flag is used.',
+                )
                 urls = ', '.join(str(url) for url in matching_urls)
                 msg = f'Title "{title}" with source "{source}" has already been used. See: {urls}'
                 logger.error(msg)
@@ -151,7 +163,19 @@ class NotionActions:
         Raises:
             requests.HTTPError: If the request to add the new page fails.
         """
-        params = {k: v for k, v in locals().items() if k not in ('self', 'force')}
+        params = {
+            'title': title,
+            'difficulty': difficulty,
+            'type_': type_,
+            'source': source,
+            'ingredients': ingredients,
+            'steps': steps,
+            'origin': origin,
+        }
+
+        if date:
+            params['date'] = date
+
         self.is_title_used(title, source, force)
         new_query = self._create_new_page(**params)
         new_query = new_query.model_dump(
@@ -161,8 +185,6 @@ class NotionActions:
             exclude_defaults=True,
         )
 
-        if not date:
-            del new_query['properties']['Date']
         try:
             logger.info(f'Trying adding a new page with query {new_query}')
             response = requests.post(NOTION_PAGES_API_URL, headers=self.headers, json=new_query)
@@ -183,7 +205,7 @@ class NotionActions:
         ingredients: str,
         steps: str,
         origin: str,
-        date: str,
+        date: str = None,
     ):
         """
         Creates a new page model for adding to the Notion database.
@@ -217,4 +239,3 @@ class NotionActions:
         return NotionNewPage.model_validate_json(
             model.model_dump_json(by_alias=True, exclude_none=True, exclude_unset=True),
         )
-
