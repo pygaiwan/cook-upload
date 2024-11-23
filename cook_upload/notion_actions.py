@@ -1,29 +1,30 @@
-import json
-from pathlib import Path
-
 import requests
 from pydantic import validate_call
+from requests.models import HTTPError
 
 from .constants import (
     NEW_PAGE_QUERY_TEMPLATE,
     NOTION_DB_API_URL,
     NOTION_PAGES_API_URL,
 )
+from .logger import logger
 from .models import NotionDBMetadata, NotionDBSearch, NotionNewPage
 from .models.notion_dbnewpage_model import SelectModel
 
 
-class TitleAlreadyUsedError(Exception):
+class PageAlreadyCreatedError(Exception):
     """Exception raised when a title has already been used."""
 
-    def __init__(self, title: str, urls: list):
+    def __init__(self, title: str, source: str, urls: list):
         self.title = title
         self.urls = urls or []
+        self.source = source
         super().__init__(self.__str__())
 
     def __str__(self):
-        urls = [str(url) for url in self.urls]
-        return f'The title "{self.title}" has already been used. See: {", ".join(urls)}'
+        urls = ', '.join(str(url) for url in self.urls)
+        msg = f'Title "{self.title}" with source "{self.source}" has already been used. See: {urls}'
+        return msg
 
 
 class NotionActions:
@@ -37,7 +38,6 @@ class NotionActions:
             'Content-Type': 'application/json',
         }
 
-    @validate_call
     def get_db_metadata(self) -> NotionDBMetadata:
         response = requests.get(NOTION_DB_API_URL.format(self.db_id), headers=self.headers)
         return NotionDBMetadata.model_validate(response.json())
@@ -46,15 +46,24 @@ class NotionActions:
     def get_entry(self, title: str = '') -> NotionDBSearch:
         """Notion will return the whole db if title is an empty string"""
         data = {'filter': {'property': 'Name', 'title': {'equals': title}}}
-        response = requests.post(
-            f'{NOTION_DB_API_URL.format(self.db_id)}/query',
-            headers=self.headers,
-            json=data,
-        )
+        logger.info(f'Getting page with title {title}')
+        try:
+            response = requests.post(
+                f'{NOTION_DB_API_URL.format(self.db_id)}/query',
+                headers=self.headers,
+                json=data,
+            )
+            response.raise_for_status()
+        except HTTPError as e:
+            msg = f'Failed to get page. Error {e}'
+            logger.error(msg)
+            raise e
+
+        logger.debug(f'Validated page with {title} and got {response.json()}')
         return NotionDBSearch.model_validate(response.json())
 
     @validate_call
-    def is_title_used(self, title: str, force: bool = False) -> None:
+    def is_title_used(self, title: str, source: str, force: bool = False) -> None:
         data = self.get_entry(title)
         lower_title = title.lower()
         matching_urls = [
@@ -65,9 +74,15 @@ class NotionActions:
         ]
 
         if matching_urls:
+            logger.warning(
+                f'Title {title} and {source} already added. If -f is used, the page will be added.',
+            )
+
             if not force:
-                raise TitleAlreadyUsedError(title, matching_urls)
-            print('Warning, title {} already present, -f is in use, adding the page.')
+                urls = ', '.join(str(url) for url in matching_urls)
+                msg = f'Title "{title}" with source "{source}" has already been used. See: {urls}'
+                logger.error(msg)
+                raise PageAlreadyCreatedError(title, source, matching_urls)
 
     def add_entry(
         self,
@@ -82,7 +97,7 @@ class NotionActions:
         force: bool = False,
     ):
         params = {k: v for k, v in locals().items() if k not in ('self', 'force')}
-        self.is_title_used(title, force)
+        self.is_title_used(title, source, force)
         new_query = self._create_new_page(**params)
         new_query = new_query.model_dump(
             by_alias=True,
@@ -94,11 +109,13 @@ class NotionActions:
         if not date:
             del new_query['properties']['Date']
         try:
+            logger.info(f'Trying adding a new page with query {new_query}')
             response = requests.post(NOTION_PAGES_API_URL, headers=self.headers, json=new_query)
             response.raise_for_status()
         except requests.HTTPError as e:
-            print(e.response.json())
-            (Path(__file__).parent.parent / 'errors.log').write_text(json.dumps(new_query))
+            logger.error(
+                f'Error in creating a new page with query: {new_query} Error {e.response.json()}',
+            )
             raise
 
     def _create_new_page(

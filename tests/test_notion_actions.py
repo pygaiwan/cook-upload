@@ -4,7 +4,7 @@ from cook_upload import (
     DishDifficulty,
     NotionActions,
     NotionDBMetadata,
-    TitleAlreadyUsedError,
+    PageAlreadyCreatedError,
 )
 
 
@@ -29,14 +29,14 @@ class Test_NotionActions:
     @pytest.mark.vcr
     def test_is_title_already_used(self, notion: NotionActions):
         with pytest.raises(
-            TitleAlreadyUsedError,
-            match='The title "Baklava" has already been used. See: https://www.notion.so/Baklava-d4251acfeb2d4f659809543ca7524094',
+            PageAlreadyCreatedError,
+            match='Title "Baklava" with source "Lebanon Cookbookp pg 413" has already been used. See: https://www.notion.so/Baklava-d4251acfeb2d4f659809543ca7524094',
         ):
-            notion.is_title_used(title='Baklava')
+            notion.is_title_used(title='Baklava', source='Lebanon Cookbookp pg 413')
 
     @pytest.mark.vcr
     def test_is_title_used_not_used(self, notion: NotionActions):
-        assert notion.is_title_used(title='Moise') is None
+        assert notion.is_title_used(title='Moise', source='moise') is None
 
     def test_new_page_payload_check(self, notion: NotionActions):
         expected = {

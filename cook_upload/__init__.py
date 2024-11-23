@@ -6,5 +6,5 @@ from .models import (
     NotionDBSearch,
     NotionNewPage,
 )
-from .notion_actions import NotionActions, TitleAlreadyUsedError
+from .notion_actions import NotionActions, PageAlreadyCreatedError
 from .openai_actions import parse_image
