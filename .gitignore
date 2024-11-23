@@ -1,4 +1,5 @@
-.DS_Store
+.env
+app.DS_Store
 **/venv/*
 __pycache__
 **/dist/*

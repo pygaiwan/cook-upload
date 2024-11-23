@@ -9,6 +9,7 @@ dependencies = [
     "typer",
     "openai",
     "loguru",
+    "dotenv",
 ]
 
 [build-system]

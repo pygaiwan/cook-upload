@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Annotated
 
 import vcr
+from dotenv import load_dotenv
 from iso3166 import countries
 from openai import OpenAI
 from typer import Argument, BadParameter, Option, Typer
@@ -23,6 +24,9 @@ from .logger import logger
 from .notion_actions import NotionActions
 from .openai_actions import parse_image
 
+load_dotenv()
+
+
 app = Typer(
     no_args_is_help=True,
     rich_markup_mode='markdown',
@@ -39,6 +43,7 @@ notion_instance = NotionActions(
     api_key=environ.get(NOTION_API_KEY),
     db_id=environ.get(NOTION_DB_ID),
 )
+
 
 def _validate_country(country: str | None) -> str | None:
     """
@@ -62,6 +67,7 @@ def _validate_country(country: str | None) -> str | None:
         logger.error(msg)
         raise BadParameter(msg) from e
 
+
 def _validate_dish_type(type_: str) -> str:
     """
     Validates the dish type to ensure it matches allowed values in Notion.
@@ -73,6 +79,7 @@ def _validate_dish_type(type_: str) -> str:
         str: The validated dish type.
     """
     return type_
+
 
 def _validate_image(image_path: Path) -> Path:
     """
@@ -96,6 +103,7 @@ def _validate_image(image_path: Path) -> Path:
         logger.error(msg)
         raise BadParameter(msg)
     return image_path
+
 
 def _validate_date(date: str | None) -> str | None:
     """
@@ -122,6 +130,7 @@ def _validate_date(date: str | None) -> str | None:
                 msg = f'Date {date} does not match the correct format of YYYYMMDD'
                 logger.error(msg)
                 raise BadParameter(msg) from e
+
 
 @app.command()
 def main(
@@ -205,6 +214,6 @@ def main(
         force=force,
     )
 
+
 if __name__ == '__main__':
     app()
-

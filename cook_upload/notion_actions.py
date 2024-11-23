@@ -171,10 +171,8 @@ class NotionActions:
             'ingredients': ingredients,
             'steps': steps,
             'origin': origin,
+            'date': date,
         }
-
-        if date:
-            params['date'] = date
 
         self.is_title_used(title, source, force)
         new_query = self._create_new_page(**params)
@@ -185,6 +183,9 @@ class NotionActions:
             exclude_defaults=True,
         )
 
+        # Not sure why model_dump does not exclude it if is not empy
+        if not date:
+            del new_query['properties']['Date']
         try:
             logger.info(f'Trying adding a new page with query {new_query}')
             response = requests.post(NOTION_PAGES_API_URL, headers=self.headers, json=new_query)
