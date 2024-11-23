@@ -1,5 +1,4 @@
 import mimetypes
-import sys
 from base64 import b64encode
 from datetime import datetime
 from os import environ
@@ -41,8 +40,19 @@ notion_instance = NotionActions(
     db_id=environ.get(NOTION_DB_ID),
 )
 
-
 def _validate_country(country: str | None) -> str | None:
+    """
+    Validates the given country name.
+
+    Args:
+        country (str | None): The country name to validate.
+
+    Returns:
+        str | None: The standardized country name if valid, otherwise None.
+
+    Raises:
+        BadParameter: If the country is not a valid ISO3166 country.
+    """
     if not country:
         return
     try:
@@ -52,14 +62,31 @@ def _validate_country(country: str | None) -> str | None:
         logger.error(msg)
         raise BadParameter(msg) from e
 
-
 def _validate_dish_type(type_: str) -> str:
-    """This is meant to validate that the type is one of those allowed in Notion"""
-    # i need to read the DBMetadata and get all the types
+    """
+    Validates the dish type to ensure it matches allowed values in Notion.
+
+    Args:
+        type_ (str): The type of dish to validate.
+
+    Returns:
+        str: The validated dish type.
+    """
     return type_
 
-
 def _validate_image(image_path: Path) -> Path:
+    """
+    Validates the provided image path to ensure it exists and is a valid JPEG image.
+
+    Args:
+        image_path (Path): The path to the image file.
+
+    Returns:
+        Path: The validated image path.
+
+    Raises:
+        BadParameter: If the file does not exist or is not a valid JPEG image.
+    """
     if (
         not image_path.exists()
         or not image_path.is_file()
@@ -70,8 +97,19 @@ def _validate_image(image_path: Path) -> Path:
         raise BadParameter(msg)
     return image_path
 
-
 def _validate_date(date: str | None) -> str | None:
+    """
+    Validates the date string and formats it if valid.
+
+    Args:
+        date (str | None): The date to validate in YYYYMMDD format.
+
+    Returns:
+        str | None: The formatted date if valid, otherwise None.
+
+    Raises:
+        BadParameter: If the date does not match the expected format.
+    """
     match date:
         case None:
             return None
@@ -84,7 +122,6 @@ def _validate_date(date: str | None) -> str | None:
                 msg = f'Date {date} does not match the correct format of YYYYMMDD'
                 logger.error(msg)
                 raise BadParameter(msg) from e
-
 
 @app.command()
 def main(
@@ -137,6 +174,18 @@ def main(
         Option('--force', '-f', help='Force the name duplication if a title is already present'),
     ] = False,
 ):
+    """
+    Main command to process an image and add an entry to the Notion database.
+
+    Args:
+        image_path (Path): The path to the image file to be processed.
+        difficulty (DishDifficulty): The difficulty of the dish.
+        source (str): The source of the recipe.
+        type_ (str): The type of the recipe.
+        country (str, optional): The country of origin of the recipe.
+        date (str, optional): The date of creation of the recipe in YYYYMMDD format.
+        force (bool, optional): If True, allows adding a recipe even if a duplicate title exists.
+    """
     titled_difficulty = difficulty.value.title()
     source = source.title()
 
@@ -156,6 +205,6 @@ def main(
         force=force,
     )
 
-
 if __name__ == '__main__':
     app()
+

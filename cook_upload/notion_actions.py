@@ -16,6 +16,12 @@ class PageAlreadyCreatedError(Exception):
     """Exception raised when a title has already been used."""
 
     def __init__(self, title: str, source: str, urls: list):
+        """
+        Args:
+            title (str): The title of the page that caused the exception.
+            source (str): The source associated with the title.
+            urls (list): A list of URLs where the title has already been used.
+        """
         self.title = title
         self.urls = urls or []
         self.source = source
@@ -29,6 +35,13 @@ class PageAlreadyCreatedError(Exception):
 
 class NotionActions:
     def __init__(self, api_key, db_id):
+        """
+        Initializes the NotionActions instance.
+
+        Args:
+            api_key (str): The API key for authenticating with the Notion API.
+            db_id (str): The ID of the Notion database to interact with.
+        """
         self.api_key = api_key
         self.db_id = db_id
 
@@ -39,12 +52,26 @@ class NotionActions:
         }
 
     def get_db_metadata(self) -> NotionDBMetadata:
+        """
+        Retrieves metadata for the Notion database.
+
+        Returns:
+            NotionDBMetadata: The metadata of the Notion database.
+        """
         response = requests.get(NOTION_DB_API_URL.format(self.db_id), headers=self.headers)
         return NotionDBMetadata.model_validate(response.json())
 
     @validate_call
     def get_entry(self, title: str = '') -> NotionDBSearch:
-        """Notion will return the whole db if title is an empty string"""
+        """
+        Retrieves an entry from the Notion database.
+
+        Args:
+            title (str, optional): The title of the page to search for. If empty, the entire database will be returned.
+
+        Returns:
+            NotionDBSearch: The search result containing the pages that match the title.
+        """
         data = {'filter': {'property': 'Name', 'title': {'equals': title}}}
         logger.info(f'Getting page with title {title}')
         try:
@@ -64,6 +91,17 @@ class NotionActions:
 
     @validate_call
     def is_title_used(self, title: str, source: str, force: bool = False) -> None:
+        """
+        Checks if a title has already been used in the Notion database.
+
+        Args:
+            title (str): The title to check for.
+            source (str): The source associated with the title.
+            force (bool, optional): If True, allows the page to be added even if the title already exists.
+
+        Raises:
+            PageAlreadyCreatedError: If the title has already been used and `force` is False.
+        """
         data = self.get_entry(title)
         lower_title = title.lower()
         matching_urls = [
@@ -96,6 +134,23 @@ class NotionActions:
         date: str,
         force: bool = False,
     ):
+        """
+        Adds a new entry to the Notion database.
+
+        Args:
+            title (str): The title of the new page.
+            difficulty (str): The difficulty level of the content.
+            type_ (str): The type of content.
+            source (str): The source of the content.
+            ingredients (str): The ingredients required.
+            steps (str): The steps involved.
+            origin (str): The origin of the recipe or content.
+            date (str): The date for the entry.
+            force (bool, optional): If True, forces adding the page even if the title already exists.
+
+        Raises:
+            requests.HTTPError: If the request to add the new page fails.
+        """
         params = {k: v for k, v in locals().items() if k not in ('self', 'force')}
         self.is_title_used(title, source, force)
         new_query = self._create_new_page(**params)
@@ -130,6 +185,22 @@ class NotionActions:
         origin: str,
         date: str,
     ):
+        """
+        Creates a new page model for adding to the Notion database.
+
+        Args:
+            title (str): The title of the page.
+            difficulty (str): The difficulty level of the content.
+            type_ (str): The type of content.
+            source (str): The source of the content.
+            ingredients (str): The ingredients required.
+            steps (str): The steps involved.
+            origin (str): The origin of the recipe or content.
+            date (str): The date for the entry.
+
+        Returns:
+            NotionNewPage: The validated model of the new page to be added.
+        """
         model = NotionNewPage.model_validate(NEW_PAGE_QUERY_TEMPLATE)
         model.parent.database_id = self.db_id
         model.properties.name.title[0].text.content = title
@@ -146,3 +217,4 @@ class NotionActions:
         return NotionNewPage.model_validate_json(
             model.model_dump_json(by_alias=True, exclude_none=True, exclude_unset=True),
         )
+
