@@ -1,12 +1,13 @@
 .env
-app.DS_Store
+.DS_Store
 **/venv/*
 __pycache__
 **/dist/*
+**/images/*
 **/build/*
 **/pkg_build/*
 **/.ruff_cache/*
 *.pyc
 *.egg-info
 .coverage
-baserequest.yaml
+**/cook.log

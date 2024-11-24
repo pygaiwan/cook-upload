@@ -127,7 +127,7 @@ def _validate_date(date: str | None) -> str | None:
         case None:
             return None
         case '':
-            return datetime.today().date().strftime(DATETIME_STR)
+            return datetime.today().date().strftime(DATETIME_FORMATTED)
         case _:
             try:
                 return datetime.strptime(date, DATETIME_STR).strftime(DATETIME_FORMATTED)
@@ -228,4 +228,4 @@ def main(
 
 
 if __name__ == '__main__':
-    app()
+    app() # pragma: no cover
