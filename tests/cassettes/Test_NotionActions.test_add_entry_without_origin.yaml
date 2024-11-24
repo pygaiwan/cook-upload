@@ -22,12 +22,12 @@ interactions:
     uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131/query
   response:
     body:
-      string: '{"object":"list","results":[],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"3cee9d71-3f5c-4903-92ae-fb2fd3af6cba"}'
+      string: '{"object":"list","results":[],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"44cc3db4-d38e-411a-9da0-95b00f1886e0"}'
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-Ray:
-      - 8e7401097ad3ef2d-LHR
+      - 8e7a31797875650f-LHR
       Connection:
       - keep-alive
       Content-Encoding:
@@ -35,16 +35,16 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 23 Nov 2024 20:45:38 GMT
+      - Sun, 24 Nov 2024 14:47:17 GMT
       ETag:
-      - W/"a6-64rCoyvbejE4yFmoo0XJuxb2aw0"
+      - W/"a6-FOSwIsRQeQrpgUd7UKXqg3+9S14"
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=bE1xDsIIbWVUP_.iU7aNMhAOyZslw5hazZ08bqSt8kA-1732394738-1.0.1.1-1cVO_mET04v4dmx20YrT9zXKSe2Rhgxec2ORO_i3QDj3YWpyqCI3Uchv0uXdUckV1R2i7kseKkahUdyyiVp_mg;
-        path=/; expires=Sat, 23-Nov-24 21:15:38 GMT; domain=.notion.com; HttpOnly;
+      - __cf_bm=xjoKj1XB3GcCSTDEBS8hTcN7Q8o6qKSvWY7vV5b9ItU-1732459637-1.0.1.1-1NWvJSRn2mDd6CrHYGFj1G3RPEsTMnRTDs5TNLUAslEVmaVGvUagfh1TBtQr6oKHawiUgvH6StMtuNcRsFtQFA;
+        path=/; expires=Sun, 24-Nov-24 15:17:17 GMT; domain=.notion.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=9Ke.D5mC8eQzKDNgT8BR0s3Wboq2l52VluJu7wNoYR0-1732394738435-0.0.1.1-604800000;
+      - _cfuvid=3Ai9p59jIBGLhFWl8H9GrJR_QfJgeyWdSNqnAEpX5YE-1732459637025-0.0.1.1-604800000;
         path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -65,7 +65,7 @@ interactions:
       x-frame-options:
       - SAMEORIGIN
       x-notion-request-id:
-      - 3cee9d71-3f5c-4903-92ae-fb2fd3af6cba
+      - 44cc3db4-d38e-411a-9da0-95b00f1886e0
       x-permitted-cross-domain-policies:
       - none
       x-xss-protection:
@@ -80,10 +80,17 @@ interactions:
       "2024-12-21"}}, "Name": {"title": [{"text": {"content": "Moise"}}]}}, "children":
       [{"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text":
       {"content": "Ingredients"}, "type": "text"}]}}, {"object": "block", "type":
-      "paragraph", "paragraph": {"rich_text": [{"text": {"content": "a,b,c"}, "type":
-      "text"}]}}, {"object": "block", "type": "heading_2", "heading_2": {"rich_text":
-      [{"text": {"content": "Steps"}, "type": "text"}]}}, {"object": "block", "type":
-      "paragraph", "paragraph": {"rich_text": [{"text": {"content": ""}, "type": "text"}]}}]}'
+      "bulleted_list_item", "bulleted_list_item": {"rich_text": [{"text": {"content":
+      "a,b,c"}, "type": "text"}]}}, {"object": "block", "type": "divider", "divider":
+      {}}, {"object": "block", "type": "heading_2", "heading_2": {"rich_text": [{"text":
+      {"content": "Steps"}, "type": "text"}]}}, {"object": "block", "type": "bulleted_list_item",
+      "bulleted_list_item": {"rich_text": [{"text": {"content": ""}, "type": "text"}]}},
+      {"object": "block", "type": "divider", "divider": {}}, {"object": "block", "type":
+      "heading_2", "heading_2": {"rich_text": [{"text": {"content": "Tips"}, "type":
+      "text"}]}}, {"object": "block", "type": "divider", "divider": {}}, {"object":
+      "block", "type": "heading_2", "heading_2": {"rich_text": [{"text": {"content":
+      "Images"}, "type": "text"}]}}, {"object": "block", "type": "divider", "divider":
+      {}}]}'
     headers:
       Accept:
       - '*/*'
@@ -94,7 +101,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '809'
+      - '1305'
       Content-Type:
       - application/json
       Notion-Version:
@@ -105,12 +112,12 @@ interactions:
     uri: https://api.notion.com/v1/pages
   response:
     body:
-      string: '{"object":"page","id":"14753a83-c0e8-81ed-98b6-d21b72f562d5","created_time":"2024-11-23T20:45:00.000Z","last_edited_time":"2024-11-23T20:45:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":null},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"asd","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"asd","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":{"start":"2024-12-21","end":null,"time_zone":null}},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Moise","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Moise","href":null}]}},"url":"https://www.notion.so/Moise-14753a83c0e881ed98b6d21b72f562d5","public_url":null,"request_id":"dbb688ae-c8e0-49f8-8339-5cc976956559"}'
+      string: '{"object":"page","id":"14853a83-c0e8-81ec-918d-f5a0cacbe6eb","created_time":"2024-11-24T14:47:00.000Z","last_edited_time":"2024-11-24T14:47:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":null},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"asd","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"asd","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":{"start":"2024-12-21","end":null,"time_zone":null}},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Moise","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Moise","href":null}]}},"url":"https://www.notion.so/Moise-14853a83c0e881ec918df5a0cacbe6eb","public_url":null,"request_id":"6dded125-6db4-4d6b-b084-f9ef2335e431"}'
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-Ray:
-      - 8e74010c4a9b491c-LHR
+      - 8e7a317bcc9194aa-LHR
       Connection:
       - keep-alive
       Content-Encoding:
@@ -118,16 +125,16 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 23 Nov 2024 20:45:39 GMT
+      - Sun, 24 Nov 2024 14:47:18 GMT
       ETag:
-      - W/"5cd-dKfSLs6Wq8fZV9GOJH//M3P/6PM"
+      - W/"5cd-pkxDCsSjT5/IHHr0M8EVAB0fWDU"
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=04ZLtypoykleWi0L7DO1UVEQl4TcPWkeclVgG6jwXec-1732394739-1.0.1.1-2Qu5rhvrihoTQ418WJCiOnKIVIRvctV.vr4GVq57J2TPEerDks.UDPNKtea98SuRlfUBlRiUz1FzbvrmScRnGA;
-        path=/; expires=Sat, 23-Nov-24 21:15:39 GMT; domain=.notion.com; HttpOnly;
+      - __cf_bm=j6ZkIbJ2ayXs2lCPvHlA6Zgv761XSTt0T2sFhiIWqiU-1732459638-1.0.1.1-6Io_zacWA3QPOOHyeRGv5oWjIfLdYILqXnl9JxB1aBfgV1WbHsorP9Zk1xwBkHt4XhDx4hibaIoALI.mI.QIJw;
+        path=/; expires=Sun, 24-Nov-24 15:17:18 GMT; domain=.notion.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=vsESIfuY03rJAnwjnDYx7PX8.2PUspwAkq.730u1Iyc-1732394739674-0.0.1.1-604800000;
+      - _cfuvid=QeacWJdLmKtA50KR9urnLT8Oj5xJp2sZa.L2v0_xbAg-1732459638321-0.0.1.1-604800000;
         path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -148,7 +155,7 @@ interactions:
       x-frame-options:
       - SAMEORIGIN
       x-notion-request-id:
-      - dbb688ae-c8e0-49f8-8339-5cc976956559
+      - 6dded125-6db4-4d6b-b084-f9ef2335e431
       x-permitted-cross-domain-policies:
       - none
       x-xss-protection:
@@ -179,12 +186,12 @@ interactions:
     uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131/query
   response:
     body:
-      string: '{"object":"list","results":[{"object":"page","id":"14753a83-c0e8-81ed-98b6-d21b72f562d5","created_time":"2024-11-23T20:45:00.000Z","last_edited_time":"2024-11-23T20:45:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":null},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"asd","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"asd","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":{"start":"2024-12-21","end":null,"time_zone":null}},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Moise","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Moise","href":null}]}},"url":"https://www.notion.so/Moise-14753a83c0e881ed98b6d21b72f562d5","public_url":null}],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"e6525ddb-7505-4069-890b-a0cafee16fe6"}'
+      string: '{"object":"list","results":[{"object":"page","id":"14853a83-c0e8-81ec-918d-f5a0cacbe6eb","created_time":"2024-11-24T14:47:00.000Z","last_edited_time":"2024-11-24T14:47:00.000Z","created_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"last_edited_by":{"object":"user","id":"0a97e157-de6b-44f6-8987-8a458601a308"},"cover":null,"icon":null,"parent":{"type":"database_id","database_id":"56dada1e-4604-428b-9e2d-7d1a8d2ad131"},"archived":false,"in_trash":false,"properties":{"Type":{"id":"%3A%3CxB","type":"select","select":{"id":"403c8036-3602-4bc5-9bf6-cf2680f4cd7e","name":"Meat","color":"purple"}},"Origin":{"id":"Q%7D%3C_","type":"select","select":null},"Difficulty":{"id":"oWhH","type":"select","select":{"id":"C?fv","name":"Easy","color":"green"}},"Source":{"id":"uv%5DN","type":"rich_text","rich_text":[{"type":"text","text":{"content":"asd","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"asd","href":null}]},"Date":{"id":"%7BJ%5EA","type":"date","date":{"start":"2024-12-21","end":null,"time_zone":null}},"Name":{"id":"title","type":"title","title":[{"type":"text","text":{"content":"Moise","link":null},"annotations":{"bold":false,"italic":false,"strikethrough":false,"underline":false,"code":false,"color":"default"},"plain_text":"Moise","href":null}]}},"url":"https://www.notion.so/Moise-14853a83c0e881ec918df5a0cacbe6eb","public_url":null}],"next_cursor":null,"has_more":false,"type":"page_or_database","page_or_database":{},"request_id":"b148b572-5d08-4242-a2b7-fcd3b18f6115"}'
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-Ray:
-      - 8e7401136ba4cd40-LHR
+      - 8e7a3183e91fbef8-LHR
       Connection:
       - keep-alive
       Content-Encoding:
@@ -192,16 +199,16 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 23 Nov 2024 20:45:40 GMT
+      - Sun, 24 Nov 2024 14:47:18 GMT
       ETag:
-      - W/"63f-yf92rCcdqF3RNs+S+3gwrLSjq84"
+      - W/"63f-wT98EV+vataafdkiaGTN4eOFbvY"
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=vfO2qDhfvgf2_bfhynIXi4qf5H6YxfcE10Nu4Gd66jg-1732394740-1.0.1.1-65XM6gtBpTh0FTkeElQI43XGblp_muMwYKlvQndpVdCufskMIEukYMvGn6WXbd2rIVPU4QKcM5llfm3lbUyFaQ;
-        path=/; expires=Sat, 23-Nov-24 21:15:40 GMT; domain=.notion.com; HttpOnly;
+      - __cf_bm=gXy9Jr9Y80gC8joib96JecUk7gx8SX9ofH53hGv8vqA-1732459638-1.0.1.1-CJNIrL.MMMYvs_Eb8g9TPe3OCcsZ83z722Ogu63csQdehqeWYXPJ.Dgo5qewn0AhWK5Yf6hnL6Cmj_Rp20KAcQ;
+        path=/; expires=Sun, 24-Nov-24 15:17:18 GMT; domain=.notion.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=.RxYLQo.hXPna6sw8ZuKmyx9jTpLKDwjs2QzGXSChIU-1732394740092-0.0.1.1-604800000;
+      - _cfuvid=atS8tW2jsRI43U3jvaMLU6MgfPWQ0Ct_tJajGTIeN6c-1732459638733-0.0.1.1-604800000;
         path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -222,7 +229,7 @@ interactions:
       x-frame-options:
       - SAMEORIGIN
       x-notion-request-id:
-      - e6525ddb-7505-4069-890b-a0cafee16fe6
+      - b148b572-5d08-4242-a2b7-fcd3b18f6115
       x-permitted-cross-domain-policies:
       - none
       x-xss-protection:

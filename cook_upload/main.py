@@ -1,11 +1,11 @@
 import mimetypes
 from base64 import b64encode
 from datetime import datetime
+from json import dumps
 from os import environ
 from pathlib import Path
 from typing import Annotated
 
-import vcr
 from dotenv import load_dotenv
 from iso3166 import countries
 from openai import OpenAI
@@ -24,7 +24,7 @@ from .logger import logger
 from .notion_actions import NotionActions
 from .openai_actions import parse_image
 
-load_dotenv()
+load_dotenv(Path(__file__).parent.parent / '.env', override=False)
 
 
 app = Typer(
@@ -78,8 +78,9 @@ def _validate_dish_type(type_: str) -> str:
     Returns:
         str: The validated dish type.
     """
-    if type_.lower() not in notion_instance.dish_type:
-        msg = f'The type {type_} is not allowed. Add it in Notion first.'
+    valid_types = notion_instance.dish_type
+    if type_.lower() not in valid_types:
+        msg = f'The type {type_} is not allowed. The valid types are {dumps(sorted(valid_types), indent=4)}. Add it in Notion first.'
         logger.error(msg)
         raise BadParameter(msg)
     return type_.title()
@@ -203,20 +204,27 @@ def main(
     source = source.title()
 
     image = b64encode(image_path.read_bytes()).decode('utf-8')
-    with vcr.use_cassette('baserequest.yaml'):
-        title, ingredients, steps = parse_image(openai_instance, base64_image=image)
 
-    notion_instance.add_entry(
-        title=title,
-        difficulty=titled_difficulty,
-        type_=type_,
-        origin=country,
-        date=date,
-        source=source,
-        ingredients=ingredients,
-        steps=steps,
-        force=force,
-    )
+    params = {
+        'difficulty': titled_difficulty,
+        'type_': type_,
+        'origin': country,
+        'date': date,
+        'source': source,
+        'force': force,
+    }
+    logger.info(f'Parameters used:\n{dumps(params, indent=4)}')
+    logger.info('Starting page extraction')
+    title, ingredients, steps = parse_image(openai_instance, base64_image=image)
+
+    params['title'] = title.title()
+    params['ingredients'] = ingredients
+    params['steps'] = steps
+    logger.info('GPT returned with:')
+    logger.info(f'\tTitle: {title}')
+    logger.info(f'\tIngredients:\n{ingredients}')
+    logger.info(f'\tSteps:\n{steps}')
+    notion_instance.add_entry(**params)
 
 
 if __name__ == '__main__':

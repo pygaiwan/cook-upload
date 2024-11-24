@@ -16,7 +16,7 @@ def parse_image(client: OpenAI, base64_image: str) -> tuple[str, str, str]:
         base64_image (str): The base64 encoded string of the image to be parsed.
 
     Returns:
-        tuple[str, str, str]: A tuple containing the extracted title, ingredients, and steps from the image.
+        tuple[str, str, str]: tuple with the extracted title, ingredients, and steps from the image.
 
     Raises:
         ValueError: If the GPT response is invalid or a refusal occurs.

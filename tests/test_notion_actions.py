@@ -40,8 +40,7 @@ class Test_NotionActions:
 
     @pytest.mark.vcr
     def test_new_page_payload_check(self, notion: NotionActions):
-        expected = {
-            'children': [
+        expected = {'children': [
                 {
                     'heading_2': {
                         'rich_text': [{'text': {'content': 'Ingredients'}, 'type': 'text'}],
@@ -50,31 +49,50 @@ class Test_NotionActions:
                     'type': 'heading_2',
                 },
                 {
+                    'bulleted_list_item': {
+                        'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}],
+                    },
                     'object': 'block',
-                    'paragraph': {'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}]},
-                    'type': 'paragraph',
+                    'type': 'bulleted_list_item',
                 },
+                {'divider': {}, 'object': 'block', 'type': 'divider'},
                 {
                     'heading_2': {'rich_text': [{'text': {'content': 'Steps'}, 'type': 'text'}]},
                     'object': 'block',
                     'type': 'heading_2',
                 },
                 {
+                    'bulleted_list_item': {
+                        'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}],
+                    },
                     'object': 'block',
-                    'paragraph': {'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}]},
-                    'type': 'paragraph',
+                    'type': 'bulleted_list_item',
                 },
+                {'divider': {}, 'object': 'block', 'type': 'divider'},
+                {
+                    'heading_2': {'rich_text': [{'text': {'content': 'Tips'}, 'type': 'text'}]},
+                    'object': 'block',
+                    'type': 'heading_2',
+                },
+                {'divider': {}, 'object': 'block', 'type': 'divider'},
+                {
+                    'heading_2': {'rich_text': [{'text': {'content': 'Images'}, 'type': 'text'}]},
+                    'object': 'block',
+                    'type': 'heading_2',
+                },
+                {'divider': {}, 'object': 'block', 'type': 'divider'},
             ],
             'parent': {'database_id': '56dada1e4604428b9e2d7d1a8d2ad131'},
             'properties': {
                 'Date': {'date': {'start': '2024-12-21'}},
                 'Difficulty': {'select': {'name': 'Hard'}},
                 'Name': {'title': [{'text': {'content': 'Moise'}}]},
-                'Origin': {'select': {'name': 'Korea'}},
                 'Source': {'rich_text': [{'text': {'content': 'Test'}}]},
                 'Type': {'select': {'name': 'Sweet'}},
+                'Origin': {'select': {'name': 'Korea'}},
             },
         }
+
         data = notion._create_new_page(
             title='Moise',
             type_='Sweet',
@@ -86,7 +104,7 @@ class Test_NotionActions:
             date='2024-12-21',
         )
         assert data.model_dump(by_alias=True, exclude_none=True) == expected
-    
+
     @pytest.mark.vcr
     def test_new_page_payload_check_without_origin(self, notion: NotionActions):
         expected = {
@@ -99,20 +117,38 @@ class Test_NotionActions:
                     'type': 'heading_2',
                 },
                 {
+                    'bulleted_list_item': {
+                        'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}],
+                    },
                     'object': 'block',
-                    'paragraph': {'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}]},
-                    'type': 'paragraph',
+                    'type': 'bulleted_list_item',
                 },
+                {'divider': {}, 'object': 'block', 'type': 'divider'},
                 {
                     'heading_2': {'rich_text': [{'text': {'content': 'Steps'}, 'type': 'text'}]},
                     'object': 'block',
                     'type': 'heading_2',
                 },
                 {
+                    'bulleted_list_item': {
+                        'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}],
+                    },
                     'object': 'block',
-                    'paragraph': {'rich_text': [{'text': {'content': 'a,b,c'}, 'type': 'text'}]},
-                    'type': 'paragraph',
+                    'type': 'bulleted_list_item',
                 },
+                {'divider': {}, 'object': 'block', 'type': 'divider'},
+                {
+                    'heading_2': {'rich_text': [{'text': {'content': 'Tips'}, 'type': 'text'}]},
+                    'object': 'block',
+                    'type': 'heading_2',
+                },
+                {'divider': {}, 'object': 'block', 'type': 'divider'},
+                {
+                    'heading_2': {'rich_text': [{'text': {'content': 'Images'}, 'type': 'text'}]},
+                    'object': 'block',
+                    'type': 'heading_2',
+                },
+                {'divider': {}, 'object': 'block', 'type': 'divider'},
             ],
             'parent': {'database_id': '56dada1e4604428b9e2d7d1a8d2ad131'},
             'properties': {

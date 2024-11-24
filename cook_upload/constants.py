@@ -27,33 +27,15 @@ NEW_PAGE_QUERY_TEMPLATE = {
         'Source': {'rich_text': [{'text': {'content': ''}}]},
         'Date': {'date': {'start': None}},
     },
-    'children': [
-        {
-            'object': 'block',
-            'type': 'heading_2',
-            'heading_2': {'rich_text': [{'type': 'text', 'text': {'content': 'Ingredients'}}]},
-        },
-        {
-            'object': 'block',
-            'type': 'paragraph',
-            'paragraph': {'rich_text': [{'type': 'text', 'text': {'content': None}}]},
-        },
-        {
-            'object': 'block',
-            'type': 'heading_2',
-            'heading_2': {'rich_text': [{'type': 'text', 'text': {'content': 'Steps'}}]},
-        },
-        {
-            'object': 'block',
-            'type': 'paragraph',
-            'paragraph': {'rich_text': [{'type': 'text', 'text': {'content': None}}]},
-        },
-    ],
+    'children': [],
 }
+
+DELIMITER = {'object': 'block', 'type': 'divider', 'divider': {}}
 
 OPENAI_TEXT = """The attached image is a receipt for a dish. Extract the title, the steps and the
 ingredients and return them, exactly as they are in the model provided.
-Do not change or translate the text. """
+Do not change or translate the text.
+Use bullet points for the ingredients and the steps."""
 
 OPENAI_MESSAGE = {
     'role': 'user',

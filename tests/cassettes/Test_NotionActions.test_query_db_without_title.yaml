@@ -22,7 +22,7 @@ interactions:
     uri: https://api.notion.com/v1/databases/56dada1e4604428b9e2d7d1a8d2ad131/query
   response:
     body:
-      string: "{\"object\":\"list\",\"results\":[{\"object\":\"page\",\"id\":\"14153a83-c0e8-805e-9ab7-c347d73e6d80\",\"created_time\":\"2024-11-17T11:41:00.000Z\",\"last_edited_time\":\"2024-11-17T11:41:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"9823e3c7-7622-4acd-a752-78077928d05f\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"9823e3c7-7622-4acd-a752-78077928d05f\"},\"cover\":null,\"icon\":null,\"parent\":{\"type\":\"database_id\",\"database_id\":\"56dada1e-4604-428b-9e2d-7d1a8d2ad131\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"Type\":{\"id\":\"%3A%3CxB\",\"type\":\"select\",\"select\":null},\"Origin\":{\"id\":\"Q%7D%3C_\",\"type\":\"select\",\"select\":null},\"Difficulty\":{\"id\":\"oWhH\",\"type\":\"select\",\"select\":null},\"Source\":{\"id\":\"uv%5DN\",\"type\":\"rich_text\",\"rich_text\":[]},\"Date\":{\"id\":\"%7BJ%5EA\",\"type\":\"date\",\"date\":null},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Instructions\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Instructions\",\"href\":null}]}},\"url\":\"https://www.notion.so/Instructions-14153a83c0e8805e9ab7c347d73e6d80\",\"public_url\":null},{\"object\":\"page\",\"id\":\"98dcbed7-ebcf-4225-b498-95b6c4d1cd73\",\"created_time\":\"2024-11-11T13:46:00.000Z\",\"last_edited_time\":\"2024-11-11T13:53:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"ff2c2fcb-5928-4b8e-8888-d0c58092985c\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"ff2c2fcb-5928-4b8e-8888-d0c58092985c\"},\"cover\":null,\"icon\":{\"type\":\"emoji\",\"emoji\":\"\U0001F98A\"},\"parent\":{\"type\":\"database_id\",\"database_id\":\"56dada1e-4604-428b-9e2d-7d1a8d2ad131\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"Type\":{\"id\":\"%3A%3CxB\",\"type\":\"select\",\"select\":{\"id\":\"9a5788ed-5896-492e-9d88-0f70d4156cd1\",\"name\":\"Cake\",\"color\":\"gray\"}},\"Origin\":{\"id\":\"Q%7D%3C_\",\"type\":\"select\",\"select\":null},\"Difficulty\":{\"id\":\"oWhH\",\"type\":\"select\",\"select\":{\"id\":\"C?fv\",\"name\":\"Easy\",\"color\":\"green\"}},\"Source\":{\"id\":\"uv%5DN\",\"type\":\"rich_text\",\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"Middle
+      string: "{\"object\":\"list\",\"results\":[{\"object\":\"page\",\"id\":\"98dcbed7-ebcf-4225-b498-95b6c4d1cd73\",\"created_time\":\"2024-11-11T13:46:00.000Z\",\"last_edited_time\":\"2024-11-11T13:53:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"ff2c2fcb-5928-4b8e-8888-d0c58092985c\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"ff2c2fcb-5928-4b8e-8888-d0c58092985c\"},\"cover\":null,\"icon\":{\"type\":\"emoji\",\"emoji\":\"\U0001F98A\"},\"parent\":{\"type\":\"database_id\",\"database_id\":\"56dada1e-4604-428b-9e2d-7d1a8d2ad131\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"Type\":{\"id\":\"%3A%3CxB\",\"type\":\"select\",\"select\":{\"id\":\"9a5788ed-5896-492e-9d88-0f70d4156cd1\",\"name\":\"Cake\",\"color\":\"gray\"}},\"Origin\":{\"id\":\"Q%7D%3C_\",\"type\":\"select\",\"select\":null},\"Difficulty\":{\"id\":\"oWhH\",\"type\":\"select\",\"select\":{\"id\":\"C?fv\",\"name\":\"Easy\",\"color\":\"green\"}},\"Source\":{\"id\":\"uv%5DN\",\"type\":\"rich_text\",\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"Middle
         Eastern Sweets p.152\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Middle
         Eastern Sweets p.152\",\"href\":null}]},\"Date\":{\"id\":\"%7BJ%5EA\",\"type\":\"date\",\"date\":{\"start\":\"2024-11-10\",\"end\":null,\"time_zone\":null}},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Apricot
         Semolina cake\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Apricot
@@ -42,7 +42,7 @@ interactions:
         Eastern Sweets pg 42\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Middle
         Eastern Sweets pg 42\",\"href\":null}]},\"Date\":{\"id\":\"%7BJ%5EA\",\"type\":\"date\",\"date\":{\"start\":\"2024-09-05\",\"end\":null,\"time_zone\":null}},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Pistachio
         Pancakes\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Pistachio
-        Pancakes\",\"href\":null}]}},\"url\":\"https://www.notion.so/Pistachio-Pancakes-0ae1319885c44db98746021662d1573f\",\"public_url\":null},{\"object\":\"page\",\"id\":\"f78c12ae-e5df-42f7-b3fc-398e5d43bf37\",\"created_time\":\"2024-08-30T08:41:00.000Z\",\"last_edited_time\":\"2024-11-11T12:14:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"ff2c2fcb-5928-4b8e-8888-d0c58092985c\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"ff2c2fcb-5928-4b8e-8888-d0c58092985c\"},\"cover\":null,\"icon\":{\"type\":\"emoji\",\"emoji\":\"\U0001F98A\"},\"parent\":{\"type\":\"database_id\",\"database_id\":\"56dada1e-4604-428b-9e2d-7d1a8d2ad131\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"Type\":{\"id\":\"%3A%3CxB\",\"type\":\"select\",\"select\":{\"id\":\"4c4fb6cf-b086-4ebc-918a-c75a92c9fee9\",\"name\":\"Pancakes\",\"color\":\"green\"}},\"Origin\":{\"id\":\"Q%7D%3C_\",\"type\":\"select\",\"select\":{\"id\":\"ff261e47-e62a-4726-8c74-904647484e2a\",\"name\":\"Morocco\",\"color\":\"purple\"}},\"Difficulty\":{\"id\":\"oWhH\",\"type\":\"select\",\"select\":{\"id\":\"C?fv\",\"name\":\"Easy\",\"color\":\"green\"}},\"Source\":{\"id\":\"uv%5DN\",\"type\":\"rich_text\",\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"Middle
+        Pancakes\",\"href\":null}]}},\"url\":\"https://www.notion.so/Pistachio-Pancakes-0ae1319885c44db98746021662d1573f\",\"public_url\":null},{\"object\":\"page\",\"id\":\"f78c12ae-e5df-42f7-b3fc-398e5d43bf37\",\"created_time\":\"2024-08-30T08:41:00.000Z\",\"last_edited_time\":\"2024-11-24T10:03:00.000Z\",\"created_by\":{\"object\":\"user\",\"id\":\"ff2c2fcb-5928-4b8e-8888-d0c58092985c\"},\"last_edited_by\":{\"object\":\"user\",\"id\":\"9823e3c7-7622-4acd-a752-78077928d05f\"},\"cover\":null,\"icon\":{\"type\":\"emoji\",\"emoji\":\"\U0001F98A\"},\"parent\":{\"type\":\"database_id\",\"database_id\":\"56dada1e-4604-428b-9e2d-7d1a8d2ad131\"},\"archived\":false,\"in_trash\":false,\"properties\":{\"Type\":{\"id\":\"%3A%3CxB\",\"type\":\"select\",\"select\":{\"id\":\"4c4fb6cf-b086-4ebc-918a-c75a92c9fee9\",\"name\":\"Pancakes\",\"color\":\"green\"}},\"Origin\":{\"id\":\"Q%7D%3C_\",\"type\":\"select\",\"select\":{\"id\":\"ff261e47-e62a-4726-8c74-904647484e2a\",\"name\":\"Morocco\",\"color\":\"purple\"}},\"Difficulty\":{\"id\":\"oWhH\",\"type\":\"select\",\"select\":{\"id\":\"C?fv\",\"name\":\"Easy\",\"color\":\"green\"}},\"Source\":{\"id\":\"uv%5DN\",\"type\":\"rich_text\",\"rich_text\":[{\"type\":\"text\",\"text\":{\"content\":\"Middle
         Eastern Sweets pg 45\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Middle
         Eastern Sweets pg 45\",\"href\":null}]},\"Date\":{\"id\":\"%7BJ%5EA\",\"type\":\"date\",\"date\":{\"start\":\"2024-08-29\",\"end\":null,\"time_zone\":null}},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Moroccan
         1000-hole pancakes (Baghir)\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Moroccan
@@ -104,12 +104,12 @@ interactions:
         Book\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Poil\xE2ne's
         Book\",\"href\":null}]},\"Date\":{\"id\":\"%7BJ%5EA\",\"type\":\"date\",\"date\":null},\"Name\":{\"id\":\"title\",\"type\":\"title\",\"title\":[{\"type\":\"text\",\"text\":{\"content\":\"Pasta
         Sfoglia\",\"link\":null},\"annotations\":{\"bold\":false,\"italic\":false,\"strikethrough\":false,\"underline\":false,\"code\":false,\"color\":\"default\"},\"plain_text\":\"Pasta
-        Sfoglia\",\"href\":null}]}},\"url\":\"https://www.notion.so/Pasta-Sfoglia-e495bd7591b44d7d8f887d33e77c5260\",\"public_url\":null}],\"next_cursor\":null,\"has_more\":false,\"type\":\"page_or_database\",\"page_or_database\":{},\"request_id\":\"4596e8af-d06b-4514-9db5-24a9e83503db\"}"
+        Sfoglia\",\"href\":null}]}},\"url\":\"https://www.notion.so/Pasta-Sfoglia-e495bd7591b44d7d8f887d33e77c5260\",\"public_url\":null}],\"next_cursor\":null,\"has_more\":false,\"type\":\"page_or_database\",\"page_or_database\":{},\"request_id\":\"7902d525-6b94-4cd4-8fd5-a3e8c86b5cef\"}"
     headers:
       CF-Cache-Status:
       - DYNAMIC
       CF-Ray:
-      - 8e73f7ffd8a23867-LHR
+      - 8e7a31700d2acd82-LHR
       Connection:
       - keep-alive
       Content-Encoding:
@@ -117,16 +117,16 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 23 Nov 2024 20:39:28 GMT
+      - Sun, 24 Nov 2024 14:47:15 GMT
       ETag:
-      - W/"a9e9-VlXiKblhbF1FdNFDi2ySwhfW31M"
+      - W/"a59d-Oa+2j3i9eK5sG6V7mmY/ivaElMM"
       Server:
       - cloudflare
       Set-Cookie:
-      - __cf_bm=Id1TyZ4g6ygxLFQ01zhjJpFlEhJ3Knio3NuxgKcnyH8-1732394368-1.0.1.1-snokmUi57YWRacZxgl7jfDg9254Mc8D6d68AaOO7ePuBisvjHJMDLdaqlyvoZMjqGbHUPUDuKpqpTiZYbwVnIQ;
-        path=/; expires=Sat, 23-Nov-24 21:09:28 GMT; domain=.notion.com; HttpOnly;
+      - __cf_bm=lNYeTLSBLXPCJpV_aiSXB_Jtix_LOyYWD4ibTbpMWEw-1732459635-1.0.1.1-6V.r1iDDOQxyqSYSHh_VX.WmUhaDWxbGdioBlfRiaAahKHxICG0GclDJw4SK7PzeezgMlRQ8hcal6xsyY2Qr6A;
+        path=/; expires=Sun, 24-Nov-24 15:17:15 GMT; domain=.notion.com; HttpOnly;
         Secure; SameSite=None
-      - _cfuvid=UqyUkTU8Ignk1JIYNSh43wJfmCJ6xO6YvI5KOUc5I54-1732394368427-0.0.1.1-604800000;
+      - _cfuvid=M76myvBYTsyaQ3Pmxby.bUHoh2XGHuUcjsIW2ckGm7M-1732459635734-0.0.1.1-604800000;
         path=/; domain=.notion.com; HttpOnly; Secure; SameSite=None
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
@@ -147,7 +147,7 @@ interactions:
       x-frame-options:
       - SAMEORIGIN
       x-notion-request-id:
-      - 4596e8af-d06b-4514-9db5-24a9e83503db
+      - 7902d525-6b94-4cd4-8fd5-a3e8c86b5cef
       x-permitted-cross-domain-policies:
       - none
       x-xss-protection:

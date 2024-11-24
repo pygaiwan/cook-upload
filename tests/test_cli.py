@@ -1,15 +1,22 @@
+import os
+from pathlib import Path
+
 import pytest
+from dotenv import load_dotenv
 from typer.testing import CliRunner
 
 from cook_upload.main import app
 
+load_dotenv(dotenv_path=Path(__file__).parent.parent / '.env')
+
+IMAGE_PATH = (Path(__file__).parent / 'images' / 'image.jpg').as_posix()
 runner = CliRunner()
 
 commands = [
-    ['image.jpg', 'Easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat', '-f'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat', '-f'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-c', 'Italy', '-t', 'Meat', '-f'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-t', 'Meat', '-f'],
+    [IMAGE_PATH, 'Easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat', '-f'],
+    [IMAGE_PATH, 'easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat', '-f'],
+    [IMAGE_PATH, 'easy', '-s', 'Leith p.56', '-c', 'Italy', '-t', 'Meat', '-f'],
+    [IMAGE_PATH, 'easy', '-s', 'Leith p.56', '-t', 'Meat', '-f'],
 ]
 
 
@@ -19,15 +26,16 @@ commands = [
     ids=['all_params', 'lowercase_diff', 'no_date', 'no_country'],
 )
 @pytest.mark.vcr
-def test_app_invoke_works(commands):
-    results = runner.invoke(app, commands)
+def test_app_invoke_works(commands, mocker):
+    mocker.patch('cook_upload.main.parse_image', return_value=('string1', 'string2', 'string3'))
+    results = runner.invoke(app, commands, env=os.environ.copy(), catch_exceptions=False)
     assert results.exit_code == 0
 
 
 commands = [
-    ['image.jpg', 'easy', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
-    ['image.jpg', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
-    ['image.jpg', 'easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy'],
+    [IMAGE_PATH, 'easy', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
+    [IMAGE_PATH, '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy', '-t', 'Meat'],
+    [IMAGE_PATH, 'easy', '-s', 'Leith p.56', '-d', '20241221', '-c', 'Italy'],
 ]
 
 

@@ -3,13 +3,14 @@ from pydantic import validate_call
 from requests.models import HTTPError
 
 from .constants import (
+    DELIMITER,
     NEW_PAGE_QUERY_TEMPLATE,
     NOTION_DB_API_URL,
     NOTION_PAGES_API_URL,
 )
 from .logger import logger
 from .models import NotionDBMetadata, NotionDBSearch, NotionNewPage
-from .models.notion_dbnewpage_model import SelectModel
+from .models.notion_dbnewpage_model import BulletListItem, Delimiter, Heading2Block, SelectModel
 
 
 class PageAlreadyCreatedError(Exception):
@@ -76,13 +77,13 @@ class NotionActions:
         Retrieves an entry from the Notion database.
 
         Args:
-            title (str, optional): The title of the page to search for. If empty, the entire database will be returned.
+            title (str, optional): The title of the page to search for. If empty,
+                the entire database will be returned.
 
         Returns:
             NotionDBSearch: The search result containing the pages that match the title.
         """
         data = {'filter': {'property': 'Name', 'title': {'equals': title}}}
-        logger.info(f'Getting page with title {title}')
         try:
             response = requests.post(
                 f'{NOTION_DB_API_URL.format(self.db_id)}/query',
@@ -106,7 +107,8 @@ class NotionActions:
         Args:
             title (str): The title to check for.
             source (str): The source associated with the title.
-            force (bool, optional): If True, allows the page to be added even if the title already exists.
+            force (bool, optional): If True, allows page to be added even if the title and sources
+                pair already exists.
 
         Raises:
             PageAlreadyCreatedError: If the title has already been used and `force` is False.
@@ -127,7 +129,7 @@ class NotionActions:
                 )
             else:
                 logger.warning(
-                    f'Title {title} and {source} already added. Operation will be stopped unless force flag is used.',
+                    f'{title} and {source} already added. Upload blocked unless force flag used.',
                 )
                 urls = ', '.join(str(url) for url in matching_urls)
                 msg = f'Title "{title}" with source "{source}" has already been used. See: {urls}'
@@ -176,20 +178,17 @@ class NotionActions:
 
         self.is_title_used(title, source, force)
         new_query = self._create_new_page(**params)
-        new_query = new_query.model_dump(
-            by_alias=True,
-            exclude_none=True,
-            exclude_unset=True,
-            exclude_defaults=True,
-        )
+        new_query = new_query.model_dump(by_alias=True, exclude_none=True)
 
         # Not sure why model_dump does not exclude it if is not empy
         if not date:
             del new_query['properties']['Date']
         try:
-            logger.info(f'Trying adding a new page with query {new_query}')
+            logger.info(f'Adding new page with title: {title}')
+            logger.debug(f'Trying adding a new page with query {new_query}')
             response = requests.post(NOTION_PAGES_API_URL, headers=self.headers, json=new_query)
             response.raise_for_status()
+            logger.info('Page added.')
         except requests.HTTPError as e:
             logger.error(
                 f'Error in creating a new page with query: {new_query} Error {e.response.json()}',
@@ -234,12 +233,39 @@ class NotionActions:
         model.properties.source.rich_text[0].text.content = source
         if date:
             model.properties.date.date.start = date
-        model.children[1].paragraph.rich_text[0].text.content = ingredients
-        model.children[3].paragraph.rich_text[0].text.content = steps
 
+        ingredients_list = [i.strip('- ') for i in ingredients.strip().split('\n')]
+        steps_list = [i.strip('- ') for i in steps.strip().split('\n')]
+
+        self._add_child(model, ingredients_list, 'Ingredients')
+        self._add_child(model, steps_list, 'Steps')
+
+        # The below features are not supported yet but added to maintain the layout of the page
+        self._add_child(model, [], 'Tips')
+        self._add_child(model, [], 'Images')
         return NotionNewPage.model_validate_json(
-            model.model_dump_json(by_alias=True, exclude_none=True, exclude_unset=True),
+            model.model_dump_json(by_alias=True, exclude_none=True),
         )
+
+    def _add_child(self, model, child_list, title_text):
+        child_title = Heading2Block(
+            object='block',
+            type='heading_2',
+            heading_2={'rich_text': [{'type': 'text', 'text': {'content': title_text}}]},
+        )
+        model.children.append(child_title)
+
+        for item in child_list:
+            item_model = BulletListItem(
+                object='block',
+                type='bulleted_list_item',
+                bulleted_list_item={
+                    'rich_text': [{'type': 'text', 'text': {'content': item}}],
+                },
+            )
+            model.children.append(item_model)
+
+        model.children.append(Delimiter(**DELIMITER))
 
     @property
     def dish_type(self) -> list[str]:

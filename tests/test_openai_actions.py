@@ -42,7 +42,7 @@ class Test_OpenAIActions:
 
     @pytest.mark.vcr
     def test_parse_image(self, openai):
-        img = Path(__file__).parent.parent / 'image.jpg'
+        img = Path(__file__).parent / 'images' / 'image.jpg'
         base64_image = b64encode(img.read_bytes()).decode('utf-8')
         title, ingredients, steps = parse_image(openai, base64_image)
         assert isinstance(title, str)
