@@ -87,13 +87,15 @@ class BulletListItem(NotionModel):
     type_: Literal['bulleted_list_item'] = Field(alias='type')
     bulleted_list_item: HeadingContent
 
+
 class Delimiter(NotionModel):
     object_: str = Field(alias='object')
     type_: Literal['divider'] = Field(alias='type')
     divider: dict = {}
 
+
 Block = Annotated[
-    Heading1Block | Heading2Block | ParagraphBlock | BulletListItem | Delimiter, 
+    Heading1Block | Heading2Block | ParagraphBlock | BulletListItem | Delimiter,
     Field(discriminator='type_'),
 ]
 

@@ -35,7 +35,7 @@ DELIMITER = {'object': 'block', 'type': 'divider', 'divider': {}}
 OPENAI_TEXT = """The attached image is a receipt for a dish. Extract the title, the steps and the
 ingredients and return them, exactly as they are in the model provided.
 Do not change or translate the text.
-Use bullet points for the ingredients and the steps."""
+Use bullet points for the ingredients and numbered list for the steps. It is important that this list format is maintained."""
 
 OPENAI_MESSAGE = {
     'role': 'user',

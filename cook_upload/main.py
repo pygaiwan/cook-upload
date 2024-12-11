@@ -228,4 +228,4 @@ def main(
 
 
 if __name__ == '__main__':
-    app() # pragma: no cover
+    app()  # pragma: no cover

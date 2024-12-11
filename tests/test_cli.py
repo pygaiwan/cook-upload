@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 from typer.testing import CliRunner
 
 from cook_upload.main import app
-from cook_upload.notion_actions import NotionActions
 
 load_dotenv(dotenv_path=Path(__file__).parent.parent / '.env')
 

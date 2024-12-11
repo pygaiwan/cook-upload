@@ -40,7 +40,8 @@ class Test_NotionActions:
 
     @pytest.mark.vcr
     def test_new_page_payload_check(self, notion: NotionActions):
-        expected = {'children': [
+        expected = {
+            'children': [
                 {
                     'heading_2': {
                         'rich_text': [{'text': {'content': 'Ingredients'}, 'type': 'text'}],
